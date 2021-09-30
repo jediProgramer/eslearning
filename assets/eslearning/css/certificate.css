@@ -1,0 +1,50 @@
+/*
+ ==========================================================================
+ codedume 2020 Certificate CSS Scripts
+ Copyright (c)  Erlangga Jedi Programer
+ ==========================================================================
+*/
+body {
+    font-family: 'Open Sans', sans-serif;
+	text-align: 'justify';
+}
+
+
+.banner-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #080808;
+  color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+  padding: 10px;
+}
+.banner-item {
+  padding: 20px;
+  font-size: 14px;
+}
+.banner-item-logo {
+  padding-top: 20px;
+  padding-left: 100px;
+  padding-bottom: 20px;
+  font-size: 14px;
+}
+.banner-item-number {
+  padding-top: 45px;
+  padding-right: 100px;
+  font-size: 14px;
+  text-align:right;
+}
+.body-container {
+  background-color: #ffffff;
+  color: #080808;
+  font-family: 'Open Sans', sans-serif;
+  padding: 10px;
+  text-align:center;
+  line-height: normal;
+}
+.signature-image {
+	border-bottom-style: solid;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
