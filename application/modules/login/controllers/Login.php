@@ -39,7 +39,7 @@ class Login extends CI_Controller {
 		$data['meta'] = 'login/meta';
 		$data['css'] = 'login/css';
 		$data['javascript'] = 'login/js';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
 	}
 	
 	public function loginprocess()
@@ -185,7 +185,7 @@ class Login extends CI_Controller {
 		$data['meta'] = 'login/meta';
 		$data['css'] = 'login/css';
 		$data['javascript'] = 'login/js';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
 	}
 	
 	public function forgotpwdsend()
@@ -276,7 +276,7 @@ class Login extends CI_Controller {
 		$data['meta'] = 'login/meta';
 		$data['css'] = 'login/css';
 		$data['javascript'] = 'login/js';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
 	}	
 	
 	public function saveresetpassword()

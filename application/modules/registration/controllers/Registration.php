@@ -35,7 +35,7 @@ class Registration extends CI_Controller {
 		$data['meta'] = 'registration/meta';
 		$data['css'] = 'registration/css';
 		$data['javascript'] = 'registration/js';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
 	}
 	
 	public function saveusers()
@@ -132,12 +132,13 @@ class Registration extends CI_Controller {
 		$data['menu'] = "registration/activation";
 		$data['menutitle'] = lang('activation');
 		$data['idlanguage'] = $rowlanguage->idlanguage;
+		$data['script_captcha']=$this->recaptcha->getScriptTag();
 		$data['databannerberanda']=$this->model->ambildata($this->db->dbprefix('bannerberanda'));
 		$data['content'] = 'registration/activation';
 		$data['meta'] = 'registration/meta';
 		$data['css'] = 'registration/css';
 		$data['javascript'] = 'registration/js';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
 		
 		$data=array(	
 			'active'=>'1'
@@ -174,13 +175,14 @@ class Registration extends CI_Controller {
 		
 		$data['menu'] = "registration/emailupdate";
 		$data['menutitle'] = lang('emailupdate');
+		$data['script_captcha']=$this->recaptcha->getScriptTag();
 		$data['idlanguage'] = $rowlanguage->idlanguage;
 		$data['databannerberanda']=$this->model->ambildata($this->db->dbprefix('bannerberanda'));
 		$data['content'] = 'registration/emailupdate';
 		$data['meta'] = 'registration/meta';
 		$data['css'] = 'registration/css';
 		$data['javascript'] = 'registration/js';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
 		
 		$data=array(	
 			'email'=>$newemail

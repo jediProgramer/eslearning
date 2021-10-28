@@ -9,7 +9,7 @@ $lang['top_courses'] = 'Video Kursus Populer';
 $lang['popular_category'] = 'Kategori Video Kursus Populer';
 $lang['total_courses'] = 'Jumlah Kursus';
 $lang['best_seller'] = 'Terlaris';
-$lang['company'] = 'Perusahaan';
+$lang['company'] = 'PERUSAHAAN';
 $lang['about'] = 'Mengenai kami';
 $lang['help'] = 'Bantuan';
 $lang['careers'] = 'Karir';
@@ -44,6 +44,7 @@ $lang['privacy']='Kebijakan Privasi';
 $lang['fullname_error_msg']='Nama Lengkap Tidak Boleh Kosong';
 $lang['username_error_msg']='Username Tidak Boleh Kosong';
 $lang['password_error_msg']='Kata Sandi Tidak Boleh Kosong';
+$lang['confirm_password_error_empty_msg']='Ulangi Kata Sandi Tidak Boleh Kosong';
 $lang['oldpassword_error_msg']='Kata Sandi Lama Tidak Boleh Kosong';
 $lang['image_error_msg']='Foto File Tidak Boleh Kosong';
 $lang['email_error_msg']='Email Tidak Boleh Kosong';
@@ -241,4 +242,24 @@ $lang['emailupdate']='Perbaharui Email';
 $lang['emailupdate_success']='Perbaharui Email Berhasil';
 $lang['emailupdate_success_msg']='Silahkan Masuk dengan Email Baru, klik tombol dibawah ini';
 $lang['notfound_page']='404 - Halaman Tidak Ditemukan';
+$lang['our_contact']='KONTAK KAMI';
+$lang['address']='<p>BTN Balitsa Cikole M-10</p>
+					<p>Lembang - Bandung 40391, Indonesia.</p>
+					<p>081321397362</p>
+					<p>support@erlanggastudio.id</p>';
+$lang['help']='PANDUAN';
+$lang['help1']='Panduan Pengguna';
+$lang['helpcenter']='PUSAT BANTUAN';	
+$lang['helpcenter1']='Helpdeks 1';	
+$lang['mobileapps']='APLIKASI MOBILE';	
+$lang['mobileapps1']='Google Play';
+$lang['mobileapps2']='Segera Hadir';	
+$lang['webname']='EDUMY';	
+$lang['faq']='Bantuan';
+$lang['companysite']='Website Perusahaan';
+$lang['pc']='Lihat Kursus';
+$lang['rm']='Simpan data akun';
+$lang['login_account']='Masuk ke Akun Anda';
+$lang['have_account']='Sudah punya akun?';
+$lang['reg_title']='Daftar Untuk Mulai Belajar';
 ?>

@@ -46,7 +46,7 @@ class Notfound extends CI_Controller {
 		$data['meta'] = 'notfound/meta';
 		$data['css'] = 'notfound/css';
 		$data['javascript'] = 'notfound/js';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
 		
 	}
 	

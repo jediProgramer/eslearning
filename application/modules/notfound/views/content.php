@@ -37,38 +37,33 @@
 	$rowbanner = $querybanner->row();
 ?>
       
-		
-		
-<main role="main">
-    <div class="jumbotron jumbotron-fluid pages">
-	  <div class="container-fluid">
-		<nav aria-label="breadcrumb ">
-		  <ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="<?php echo base_url();?>home" class="link-title"><?php echo lang('home');?></a></li>
-			<li class="breadcrumb-item active" aria-current="page"><?php echo lang('notfound_page');?></li>
-		  </ol>
-		</nav>
-	  </div>
-    </div>
+<!-- Inner Page Breadcrumb -->
+<section class="inner_page_breadcrumb">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-6 offset-xl-3 text-center">
+				<div class="breadcrumb_content">
+					<h4 class="breadcrumb_title"><?php echo lang('notfound_page');?></h4>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="<?php echo base_url();?>"><?php echo lang('home');?></a></li>
+						<li class="breadcrumb-item active" aria-current="page"><?php echo lang('notfound_page');?></li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>  	
 
-
-<!-- Registration -->
-<div class="container-fluid register-content-item">
-	<div class="row ">
-	
-		<div class="container">
-			  <div class="card-body">
+<!-- Box Section -->
+<section class="our-team pb40">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-12">
 				<center>
 				<img src="<?php echo base_url();?>assets/eslearning/img/404_page_not_found.png" width="550" heigt="550"><br/>
 				<h1><b><?php echo lang('notfound_page');?></b></h1>	
 				</center>
-			  </div>	
+			</div>
 		</div>
-		<!-- /.container-fluid -->
-	  
-    </div>
-    <!-- /.row -->
-</div>
-<!-- /Registration -->
-
-</main>
+	</div>
+</section>	

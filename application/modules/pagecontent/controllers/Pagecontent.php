@@ -58,7 +58,7 @@ class Pagecontent extends CI_Controller {
 		$data['meta'] = 'pagecontent/meta';
 		$data['css'] = 'pagecontent/css';
 		$data['javascript'] = 'pagecontent/js';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
 	}
 	
 }

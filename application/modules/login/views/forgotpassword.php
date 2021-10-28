@@ -2,57 +2,41 @@
 	$querybanner = $this->db->query("SELECT * FROM `".$this->db->dbprefix('bannerberanda')."` WHERE idlanguage='".$idlanguage."'");
 	$rowbanner = $querybanner->row();
 ?>
-      
-		
-		
-<main role="main">
-    <div class="jumbotron jumbotron-fluid pages">
-	  <div class="container-fluid">
-		<nav aria-label="breadcrumb ">
-		  <ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="<?php echo base_url();?>home" class="link-title"><?php echo lang('home');?></a></li>
-			<li class="breadcrumb-item active" aria-current="page"><?php echo lang('forgot_password');?></li>
-		  </ol>
-		</nav>
-	  </div>
-    </div>
 
-
-<!-- Registration -->
-  <div class="container-fluid codedume-content-item">
-  
-	<div class="row">
+<!-- Inner Page Breadcrumb -->
+<section class="inner_page_breadcrumb">
 	<div class="container">
-          <div class="card-body">
-            	
-               <form class="form-horizontal" id="webforgotPwdForm">
-                <div class="card-body col-sm-9 offset-sm-2">
-				  <div class="form-group row">
-                    <label for="inputEmail" class="col-sm-2 col-form-label"><?php echo lang('email');?></label>
-                    <div class="col-sm-10">
-                      <input type="type" placeholder="<?php echo lang('your_email');?>" class="form-control" id="email" name="email">
-                    </div>
-                  </div>
-				  <div class="form-group row">
-                    <div class="offset-sm-2 col-sm-10">
-						<?php echo $captcha // tampilkan recaptcha ?>
-					</div>
-                  </div>
-				  <div class="form-group row">
-                    <div class="offset-sm-2 col-sm-10">
-                      <button type="submit" class="btn btn-primary float-left" id="btn_save"><?php echo lang('send');?></button>
-                    </div>
-                  </div>
-                </div>
-                <!-- /.card-body -->
+		<div class="row">
+			<div class="col-xl-6 offset-xl-3 text-center">
+				<div class="breadcrumb_content">
+					<h4 class="breadcrumb_title"><?php echo lang('forgot_password');?></h4>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="<?php echo base_url();?>"><?php echo lang('home');?></a></li>
+						<li class="breadcrumb-item active" aria-current="page"><?php echo lang('forgot_password');?></li>
+					</ol>
 				</div>
-				</form>  
-      </div><!-- /.container-fluid -->
-	  
-    </div>
-    <!-- /.row -->
-  
-</div>
-<!-- /Registration -->
-
-</main>
+			</div>
+		</div>
+	</div>
+</section>     
+		
+<!-- Our LogIn Register -->
+<section class="our-log bgc-fa">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-lg-6 offset-lg-3">
+				<div class="login_form inner_page">
+					<form id="webforgotPwdForm">
+						 <div class="form-group">
+							<input type="email" name="email" class="form-control" id="email" placeholder="<?php echo lang('email');?>">
+						</div>
+						<div class="form-group">
+							<center><?php echo $captcha // tampilkan recaptcha ?></center>
+						</div>
+						<button type="submit" class="btn btn-log btn-block btn-thm2"><?php echo lang('send');?></button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>	

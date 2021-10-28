@@ -55,7 +55,7 @@ class Home extends CI_Controller {
 		$data['meta'] = 'home/meta';
 		$data['css'] = 'home/css';
 		$data['javascript'] = 'home/js';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
 	}
 	
 	function get_autocomplete(){

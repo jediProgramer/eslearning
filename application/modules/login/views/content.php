@@ -2,74 +2,53 @@
 	$querybanner = $this->db->query("SELECT * FROM `".$this->db->dbprefix('bannerberanda')."` WHERE idlanguage='".$idlanguage."'");
 	$rowbanner = $querybanner->row();
 ?>
-      
-		
-		
-<main role="main">
-    <div class="jumbotron jumbotron-fluid pages">
-	  <div class="container-fluid">
-		<nav aria-label="breadcrumb ">
-		  <ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="<?php echo base_url();?>home" class="link-title"><?php echo lang('home');?></a></li>
-			<li class="breadcrumb-item active" aria-current="page"><?php echo lang('login');?></li>
-		  </ol>
-		</nav>
-	  </div>
-    </div>
-
-
-<!-- Registration -->
-  <div class="container-fluid codedume-content-item">
-  
-	<div class="row">
+<!-- Inner Page Breadcrumb -->
+<section class="inner_page_breadcrumb">
 	<div class="container">
-          <div class="card-body">
-            	
-               <form class="form-horizontal" id="webloginForm">
-                <div class="card-body col-sm-9 offset-sm-2">
-				  <div class="form-group row">
-                    <label for="inputEmail" class="col-sm-2 col-form-label"><?php echo lang('email');?></label>
-                    <div class="col-sm-10">
-                      <input type="type" placeholder="<?php echo lang('your_email');?>" class="form-control" id="email" name="email">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label"><?php echo lang('password');?></label>
-                    <div class="col-sm-10">
-                      <input type="password" class="form-control" id="password" name="password">
-                    </div>
-                  </div>
-				  <div class="form-group row">
-                    <div class="offset-sm-2 col-sm-10">
-						<?php echo $captcha // tampilkan recaptcha ?>
-					</div>
-                  </div>
-				  <div class="form-group row">
-                    <div class="offset-sm-2 col-sm-10">
-					  <label class="col-form-label"><a href="<?php echo base_url();?>login/forgotpassword" class="link-title"><?php echo lang('forgot_password');?>?</a></label><br/>
-					  </div>
-                  </div>
-				  <div class="form-group row">
-                    <div class="offset-sm-2 col-sm-10">
-                      <button type="submit" class="btn btn-primary float-left" id="btn_save"><?php echo lang('login');?></button>
-                    </div>
-                  </div>
-				  <hr/>
-				  <div class="form-group row">
-					<div class="offset-sm-2 col-sm-10">
-					<p><?php echo lang('dont_have_account');?> <a href="<?php echo base_url();?>registration" class="link-title"><?php echo lang('register');?></a></p>
-					</div>
-				  </div>
-                </div>
-                <!-- /.card-body -->
+		<div class="row">
+			<div class="col-xl-6 offset-xl-3 text-center">
+				<div class="breadcrumb_content">
+					<h4 class="breadcrumb_title"><?php echo lang('login');?></h4>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="<?php echo base_url();?>"><?php echo lang('home');?></a></li>
+						<li class="breadcrumb-item active" aria-current="page"><?php echo lang('login');?></li>
+					</ol>
 				</div>
-				</form>  
-      </div><!-- /.container-fluid -->
-	  
-    </div>
-    <!-- /.row -->
-  
-</div>
-<!-- /Registration -->
+			</div>
+		</div>
+	</div>
+</section>
 
-</main>
+<!-- Our LogIn Register -->
+<section class="our-log bgc-fa">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-lg-6 offset-lg-3">
+				<div class="login_form inner_page">
+					<form id="webloginForm">
+						<div class="heading">
+							<h3 class="text-center"><?php echo lang('login_account');?></h3>
+							<p class="text-center"><?php echo lang('dont_have_account');?>  <a class="text-thm" href="<?php echo base_url();?>registration"><?php echo lang('register');?>!</a></p>
+						</div>
+						 <div class="form-group">
+							<input type="email" name="email" class="form-control" id="email" placeholder="<?php echo lang('email');?>">
+						</div>
+						<div class="form-group">
+							<input type="password" name="password" class="form-control" id="password" placeholder="<?php echo lang('password');?>">
+						</div>
+						<div class="form-group">
+							<center><?php echo $captcha // tampilkan recaptcha ?></center>
+						</div>
+						<div class="form-group custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="exampleCheck3">
+							<label class="custom-control-label" for="exampleCheck3"><?php echo lang('rm');?></label>
+							<a class="tdu btn-fpswd float-right" href="<?php echo base_url();?>login/forgotpassword"><?php echo lang('forgot_password');?>?</a>
+						</div>
+						<button type="submit" class="btn btn-log btn-block btn-thm2"><?php echo lang('login');?></button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+

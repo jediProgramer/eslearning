@@ -32,62 +32,140 @@
       
 		
 		
-<main role="main">
-<div id="demo" class="carousel slide" data-ride="carousel">
-  <ul class="carousel-indicators">
-	<?php
-	$querymaxbanner = $this->db->query("SELECT COUNT(*) AS totalbanner FROM `".$this->db->dbprefix('bannerberanda')."` WHERE idlanguage='".$idlanguage."'");
-	$rowmaxbanner = $querymaxbanner->row();
-	$totalbanner = $rowmaxbanner->totalbanner;
-	
-	for($i=0;$i<$totalbanner;$i++)
-	{	
-	?>
-    <li data-target="#demo" data-slide-to="<?php echo $i;?>" <?php if($i==0){?>class="active"><?php }?></li>
-    <?php
-	}
-	?>
-  </ul>
-  <div class="carousel-inner">
-	<?php
-		$querybanner = $this->db->query("SELECT * FROM ".$this->db->dbprefix('bannerberanda')." WHERE idlanguage='".$idlanguage."' ORDER BY idbanner DESC LIMIT 5");
-		$databanner=$querybanner->result(); 
-		foreach ($databanner as $db)
-		{
-	?>
-    <div class="carousel-item active">
-      <img src="<?php echo base_url()?>assets/files/banners/<?php echo $db->image;?>" width="1100" height="500">
-	  	<div class="container">
-            <div class="carousel-caption text-left">
-			<?php echo $db->text;?>   
-            </div>
-        </div>   
-    </div>
-	<?php	
-		}	
-	?>
-  </div>
-  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </a>
-  <a class="carousel-control-next" href="#demo" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
-</div>
-
-
-<!-- Page Lastest Courses -->
-  <div class="container-fluid courses-content-item">
-  
-  	<div class="container-fluid courses-header">
-		<div class="row">
-			<div class="col text-left wow fadeInUp">
-				<h1 class="courses-header-title"><?php echo lang('lastest_courses');?></h2>
+<!-- 2nd Home Slider -->
+	<div class="home1-mainslider">
+		<div class="container-fluid p0">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="main-banner-wrapper">
+					    <div class="banner-style-one owl-theme owl-carousel">
+					    <?php
+							$querybanner = $this->db->query("SELECT * FROM ".$this->db->dbprefix('bannerberanda')." WHERE idlanguage='".$idlanguage."' ORDER BY idbanner DESC LIMIT 5");
+							$databanner=$querybanner->result(); 
+							foreach ($databanner as $db)
+							{
+						?>    
+							<div class="slide slide-one" style="background-image: url(<?php echo base_url()?>assets/files/banners/<?php echo $db->image;?>); height: 95vh;">
+					            <div class="container">
+					                <div class="row home-content">
+					                    <div class="col-lg-12 text-center p0">
+					                        <?php echo $db->text;?> 
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+							<?php	
+								}	
+							?>
+					        <div class="slide slide-one" style="background-image: url(<?php echo base_url()?>assets/edumy/images/home/2.jpg);height: 95vh;">
+					            <div class="container">
+					                <div class="row home-content">
+					                    <div class="col-lg-12 text-center p0">
+					                        <h3 class="banner-title">Self EducatIon Resources and Infos</h3>
+					                        <p>Technology is brining a massive wave of evolution on learning things on different ways</p>
+					                        <div class="btn-block"><a href="#" class="banner-btn">Ready to get Started?</a></div>
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+							
+					        <div class="slide slide-one" style="background-image: url(<?php echo base_url()?>assets/edumy/images/home/3.jpg);height: 95vh;">
+					            <div class="container">
+					                <div class="row home-content">
+					                    <div class="col-lg-12 text-center p0">
+					                        <h3 class="banner-title">Find the Best Courses</h3>
+					                        <p>Technology is brining a massive wave of evolution on learning things on different ways</p>
+					                        <div class="btn-block"><a href="#" class="banner-btn">Ready to get Started?</a></div>
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+					    </div>
+					    <div class="carousel-btn-block banner-carousel-btn">
+					        <span class="carousel-btn left-btn"><i class="flaticon-left-arrow left"></i></span>
+					        <span class="carousel-btn right-btn"><i class="flaticon-right-arrow-1 right"></i></span>
+					    </div><!-- /.carousel-btn-block banner-carousel-btn -->
+					</div><!-- /.main-banner-wrapper -->
+				</div>
 			</div>
 		</div>
-    </div>
-  
-	<div class="row wow fadeInLeftBig">
+	</div>
+
+	<!-- School Category Courses -->
+	<section id="our-courses" class="our-courses pt90 pt650-992">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<a href="#our-courses">
+				    	<div class="mouse_scroll">
+			        		<div class="icon"><span class="flaticon-download-arrow"></span></div>
+				    	</div>
+				    </a>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 offset-lg-3">
+					<div class="main-title text-center">
+						<h3 class="mt0"><?php echo lang('popular_category');?></h3>
+						<p><?php echo lang('popular_category');?></p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+			<?php
+				$querycategory = $this->db->query("SELECT * FROM ".$this->db->dbprefix('category')." WHERE favorite >= '50' AND idlanguage='".$idlanguage."' ORDER BY date DESC LIMIT 4");
+				$datacategory = $querycategory->result(); 
+				foreach ($datacategory as $dc)
+				{
+					
+					// ================ Count Courses ================ //
+					$querycountcourses = $this->db->query("SELECT COUNT(*) AS totalcourses FROM `".$this->db->dbprefix('courses')."` WHERE idcategory='".$dc->idcategory."'");
+					$rowcountcourses = $querycountcourses->row();
+					$totalcourses = $rowcountcourses->totalcourses;
+					
+			?>
+			
+				<div class="col-sm-6 col-lg-3">
+					<div class="img_hvr_box" style="background-image: url(<?php echo base_url()?>assets/files/category/<?php echo $dc->image;?>);">
+						<div class="overlay">
+							<div class="details">
+								<h5><?php echo $dc->title;?></h5>
+								<p><?php echo lang('total_courses');?> (<?php echo $totalcourses;?>)</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			<?php
+				}
+			?>	
+				
+				
+				<div class="col-lg-6 offset-lg-3">
+					<div class="courses_all_btn text-center">
+						<a class="btn btn-transparent" href="<?php echo base_url();?>learning/courses"><?php echo lang('view_all');?></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Our Popular Courses -->
+	<section class="popular-courses pb0 pt0">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 offset-lg-3">
+					<div class="main-title text-center">
+						<h3 class="mt0"><?php echo lang('lastest_courses');?></h3>
+						<p><?php echo lang('lastest_courses');?></p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="popular_course_slider_home3">
+					
 	<?php
 		$querylastestcourses = $this->db->query("SELECT * FROM ".$this->db->dbprefix('courses')." WHERE idcoursetype='2' AND idlanguage='".$idlanguage."' ORDER BY date DESC LIMIT 4");
 		$datalastestcourses=$querylastestcourses->result(); 
@@ -114,130 +192,68 @@
 			$totalpayment = $rowcountpayment->totalpayment;
 			
 	?>
-      <div class="col-lg-3 col-md-6 mb-4 d-flex align-items-stretch">
-        <div class="card h-100 card-courses-item rounded-0">
-		   <div class="img-gradient">
-			<img class="card-img-top img-fluid" src="<?php echo base_url()?>assets/files/courses/<?php echo $dlc->image;?>" alt="Card image cap">
-			<?php
-				if($totalpayment>='50')
-				{
-			?>
-			<div class="courses-label">
-				<span class="courses-text-label"><?php echo lang('best_seller');?></span>
-			</div>
-			<?php
-				}			
-			?>
-		  </div>	
-		  <div class="card-body">
-            <h4 class="card-title"><a class="card-courses-title" href="<?php echo base_url()?>learning/coursesdetail/<?php echo $dlc->idcourses;?>"><?php echo $dlc->title;?></a></h4>
-            <p class="card-text">
-			<?php 
-			$queryusers = $this->db->query("SELECT fullname FROM `".$this->db->dbprefix('users')."` WHERE iduser='".$rowinstructors->iduser."'");
-			$datausers=$queryusers->result(); 
-			$x=0;
-			$coma="";
-			foreach ($datausers as $du)
-			{
-				$x++;
-				if ($x<$queryusers->num_rows())
-				{
-					$coma=", ";	
-				}
-					echo $du->fullname.$coma;
-			}	
-			?>
-			</p>
-			<p class="card-text">
-			<?php
-				for($i=1;$i<=5;$i++) 
-				{
-			?>		
-					<span class="fa fa-star <?php if($i<=$ratingchecked){ echo "checked";}?>"></span>
-			<?php
-				}
-			?>	
-				<b><?php echo number_format($reviewstar,1);?></b> (<?php echo $reviewtotal;?>)
-			</p>
-			<p class="card-text text-right"><b><?php if($dlc->price!=0){echo lang('curency')." ".money($dlc->price);}else{ echo lang('free');}?></b></p>
-            <p class="card-text"><small class="text-muted"><?php echo timeago($dlc->date,$idlanguage);?></small></p>
-          </div>
-        </div>
-      </div>
-	  <?php
-		}
-	  ?>
-	  
-    </div>
-    <!-- /.row -->
-
-	
-	
-	<!-- Footer -->
-    <div class="container">
-	<div class="row">
-      <div class="col text-center wow fadeInUp">
-        <a class="btn btn-primary btn-more rounded-0 btn-lg" href="<?php echo base_url();?>learning/courses"><?php echo lang('view_all');?></a>
-      </div>
-	</div>
-    </div>
-  
-</div>
-<!-- /Lastets Courses -->
-
- 
-
-<!-- Page Popular Category -->
-  <div class="container-fluid category-content-item">
-  
-  	<div class="container-fluid category-header">
-		<div class="row">
-			<div class="col text-left wow fadeInUp">
-				<h1 class="category-header-title"><?php echo lang('popular_category');?></h2>
-			</div>
-		</div>
-    </div>
-  
-	<div class="row wow fadeInLeftBig">
-	<?php
-		$querycategory = $this->db->query("SELECT * FROM ".$this->db->dbprefix('category')." WHERE favorite >= '50' AND idlanguage='".$idlanguage."' ORDER BY date DESC LIMIT 4");
-		$datacategory = $querycategory->result(); 
-		foreach ($datacategory as $dc)
-		{
-			
-			// ================ Count Courses ================ //
-			$querycountcourses = $this->db->query("SELECT COUNT(*) AS totalcourses FROM `".$this->db->dbprefix('courses')."` WHERE idcategory='".$dc->idcategory."'");
-			$rowcountcourses = $querycountcourses->row();
-			$totalcourses = $rowcountcourses->totalcourses;
-			
-	?>	
-      <div class="col-lg-3 col-md-6">
-        <div class="card card-category-item rounded-0">
-		    <div class="category-gradient">
-				<img class="card-img-top img-fluid" src="<?php echo base_url()?>assets/files/category/<?php echo $dc->image;?>" alt="Card image cap">
-				<div class="card-img-overlay d-flex flex-column justify-content-end">
-					<h4 class="card-title"><a class="card-category-title" href="<?php echo base_url()?>learning/coursescategory/<?php echo $dc->idcategory;?>/0"><?php echo $dc->title;?></a></h4>
-					<p class="card-text category-text"><small class="category-text"><?php echo lang('total_courses');?> (<?php echo $totalcourses;?>)</small></p>
-				</div>	
-			</div>
-        </div>
-      </div>
+					
+						<div class="item">
+							<div class="top_courses mb0">
+								<div class="thumb">
+									<img class="img-whp" src="<?php echo base_url()?>assets/files/courses/<?php echo $dlc->image;?>" alt="<?php echo $dlc->image;?>">
+									<div class="overlay">
+									<?php
+										if($totalpayment>='50')
+										{
+									?>
+										<div class="tag"><?php echo lang('best_seller');?></div>
+									<?php
+										}			
+									?>	
+										<a class="tc_preview_course" href="<?php echo base_url()?>learning/coursesdetail/<?php echo $dlc->idcourses;?>"><?php echo lang('pc');?></a>
+									</div>
+								</div>
+								<div class="details">
+									<div class="tc_content">
+										<p>
+										<?php 
+										$queryusers = $this->db->query("SELECT fullname FROM `".$this->db->dbprefix('users')."` WHERE iduser='".$rowinstructors->iduser."'");
+										$datausers=$queryusers->result(); 
+										$x=0;
+										$coma="";
+										foreach ($datausers as $du)
+										{
+											$x++;
+											if ($x<$queryusers->num_rows())
+											{
+												$coma=", ";	
+											}
+												echo $du->fullname.$coma;
+										}	
+										?>
+										</p>
+										<h5><?php echo $dlc->title;?></h5>
+										<ul class="tc_review">
+										<?php
+											for($i=1;$i<=$ratingchecked;$i++) 
+											{
+										?>		
+											<li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
+										<?php
+											}
+										?>		
+											<li class="list-inline-item"><a href="#"><b><?php echo number_format($reviewstar,1);?></b> (<?php echo $reviewtotal;?>)</a></li>
+										</ul>
+									</div>
+									<div class="tc_footer">
+										<div class="tc_price float-right"><?php if($dlc->price!=0){echo lang('curency')." ".money($dlc->price);}else{ echo lang('free');}?></div>
+									</div>
+								</div>
+							</div>
+						</div>
 	<?php
 		}
 	?>
-    </div>
-    <!-- /.row -->
-	
-	<!-- Footer -->
-    <div class="container">
-	<div class="row">
-      <div class="col text-center wow fadeInUp">
-        <a class="btn btn-primary btn-more rounded-0 btn-lg" href="<?php echo base_url();?>learning/courses"><?php echo lang('view_all');?></a>
-      </div>
-	</div>
-    </div>
-  
-</div>
-<!-- /Top Courses -->
-
-</main>
+						
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
