@@ -231,10 +231,10 @@
 										<h5><?php echo $dlc->title;?></h5>
 										<ul class="tc_review">
 										<?php
-											for($i=1;$i<=$ratingchecked;$i++) 
+											for($i=1;$i<=5;$i++) 
 											{
 										?>		
-											<li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
+											<li class="list-inline-item"><a href="#"><i class="<?php if($i<=$ratingchecked){ echo "fa fa-star";}else{ echo "fa fa-star-o";}?>"></i></a></li>
 										<?php
 											}
 										?>		
