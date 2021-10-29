@@ -107,7 +107,7 @@ class Learning extends CI_Controller {
         $config['target']      = '#postList';
         $config['base_url']    = base_url().'learning/ajaxPaginationData';
         $config['total_rows']  = $totalRec;
-        $config['per_page']    = $this->perPage;
+		$config['per_page']    = $this->perPage;
         $config['link_func']   = 'searchFilter';
         $this->ajax_pagination->initialize($config);
         
@@ -118,7 +118,7 @@ class Learning extends CI_Controller {
 		$data['meta'] = 'learning/meta_courses';
 		$data['css'] = 'learning/css_courses';
 		$data['javascript'] = 'learning/js_courses';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
     }
 	
 	public function searchcourses()
@@ -174,7 +174,7 @@ class Learning extends CI_Controller {
 		$data['meta'] = 'learning/meta_courses';
 		$data['css'] = 'learning/css_courses';
 		$data['javascript'] = 'learning/js_courses';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
     }
 	
 	public function coursescategory($idcategory,$idsubcategory)
@@ -223,7 +223,6 @@ class Learning extends CI_Controller {
         //pagination configuration
         $config['target']      = '#postList';
         $config['base_url']    = base_url().'learning/ajaxPaginationDataCategory';
-        //$config['total_rows']  = $totalRec;
 		$config['total_rows']  = $totalRec;
         $config['per_page']    = $this->perPage;
         $config['link_func']   = 'searchFilter';
@@ -239,6 +238,7 @@ class Learning extends CI_Controller {
 		
 		$conditions = array();
 		$conditions['search']['category'] = $idcategory;
+		$conditions['search']['subcategory'] = $idsubcategory;
         $conditions['limit'] = $this->perPage;
         
         //get the posts data
@@ -248,7 +248,7 @@ class Learning extends CI_Controller {
 		$data['meta'] = 'learning/meta_coursescategory';
 		$data['css'] = 'learning/css_coursescategory';
 		$data['javascript'] = 'learning/js_coursescategory';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
     }
 	
 	function ajaxPaginationData(){
@@ -294,7 +294,7 @@ class Learning extends CI_Controller {
         $config['target']      = '#postList';
         $config['base_url']    = base_url().'learning/ajaxPaginationData';
         $config['total_rows']  = $totalRec;
-        $config['per_page']    = $this->perPage;
+		$config['per_page']    = $this->perPage;
         $config['link_func']   = 'searchFilter';
         $this->ajax_pagination->initialize($config);
         
@@ -351,7 +351,7 @@ class Learning extends CI_Controller {
         $config['target']      = '#postList';
         $config['base_url']    = base_url().'learning/ajaxPaginationDataCategory';
         $config['total_rows']  = $totalRec;
-        $config['per_page']    = $this->perPage;
+		$config['per_page']    = $this->perPage;
         $config['link_func']   = 'searchFilter';
 		$config['uri_segment']   = '3';
         $this->ajax_pagination_category->initialize($config);
@@ -1128,7 +1128,7 @@ class Learning extends CI_Controller {
 		$data['meta'] = 'learning/meta_profile';
 		$data['css'] = 'learning/css_profile';
 		$data['javascript'] = 'learning/js_profile';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
     }
 	
 	function ajaxPaginationDataInstructors(){

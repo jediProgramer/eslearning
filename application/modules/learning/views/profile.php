@@ -80,170 +80,144 @@
 	}
 ?>
       
-		
-		
-<main role="main">
-
-    <div class="jumbotron jumbotron-fluid profile">
-	  <div class="container">
-		 <div class="row">
-		  <div class="col-sm-3"> <img src="<?php if($rowusers->profilepicture==""){ ?><?php echo base_url()?>assets/files/users/default_user.png<?php }else{ ?><?php echo base_url()?>assets/files/users/<?php echo $rowusers->profilepicture;?><?php } ?>" class="img-thumbnail" alt="Cinque Terre"> </div>
-		  <div class="col-sm-9">
-			<p>
-			<h1><?php echo $rowusers->fullname;?></h1>
-			<br/><p>@<?php echo $rowusers->username;?></p><?php echo lang('joinedsince');?> <?php echo $tgl." ".$bulanind." ".$tahun;?>,&nbsp;<i class="fas fa-map-marker-alt"></i> <?php echo $rowusers->country;?>
-			</p>
-			<p align="justify"><?php echo $rowusers->profile;?></p>
-			<p align="justify">
-			<?php 
-				$query_a = $this->db->query("SELECT * FROM ".$this->db->dbprefix('education')." WHERE iduser='".$rowusers->iduser."'");
-				$data_a=$query_a->result(); 
-				foreach ($data_a as $da)
-				{
-				echo $da->level." - ".$da->college." - ".$da->field_of_study."<br/>";
-				}
-			?>
-			</p>
-			</div>
-		</div> 
-	  </div>
-    </div>
-
-
-  <!-- Registration -->
-  <div class="container-fluid codedume-content-item">
-	<div class="row">
-		<div class="container-fluid">
-		
-			<nav aria-label="breadcrumb ">
-			  <ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="<?php echo base_url();?>home" class="link-title"><?php echo lang('home');?></a></li>
-				<li class="breadcrumb-item active" aria-current="page"><?php echo lang('profile_instructors');?></li>
-			  </ol>
-			</nav>
-		
-            <div class="card-body">
-			<h1><?php echo lang('courses_by');?> <?php echo $rowusers->fullname;?></h1><hr/><br/>
-			
-			<div class="row" id="postList">
-			
-			<?php
-			if(!empty($posts))
-			{
-				foreach ($posts as $dlc)
-				{
-				$queryinstructors = $this->db->query("SELECT iduser FROM `".$this->db->dbprefix('instructors')."` WHERE idcourses='".$dlc["idcourses"]."'");
-				$rowinstructors = $queryinstructors->row();
-				
-				// ================ Rating ================ //
-				
-				$querysumrating = $this->db->query("SELECT SUM(rating) AS ratingtotal FROM `".$this->db->dbprefix('review')."` WHERE idcourses='".$dlc["idcourses"]."'");
-				$rowsumrating = $querysumrating->row();
-				$totalrating = $rowsumrating->ratingtotal;
-				
-				$querycountrating = $this->db->query("SELECT COUNT(*) AS reviewertotal FROM `".$this->db->dbprefix('review')."` WHERE idcourses='".$dlc["idcourses"]."'");
-				$rowcountrating = $querycountrating->row();
-				$reviewtotal = $rowcountrating->reviewertotal;
-				
-				$reviewstar=$totalrating / $reviewtotal;
-				$ratingchecked=round($reviewstar);
-
-				$querycountpayment = $this->db->query("SELECT COUNT(*) AS totalpayment FROM `".$this->db->dbprefix('payment')."` WHERE idcourses='".$dlc["idcourses"]."'");
-				$rowcountpayment = $querycountpayment->row();
-				$totalpayment = $rowcountpayment->totalpayment;
-				
-		?>
-		  <div class="col-lg-3 col-md-6 mb-4 d-flex align-items-stretch">
-			<div class="card h-100 card-courses-item rounded-0">
-			   <div class="img-gradient">
-				<img class="card-img-top img-fluid" src="<?php echo base_url()?>assets/files/courses/<?php echo $dlc["image"];?>" alt="Card image cap">
-				<?php
-					if($totalpayment>='50')
-					{
-				?>
-				<div class="courses-label">
-					<span class="courses-text-label"><?php echo lang('best_seller');?></span>
+<!-- Inner Page Breadcrumb -->
+<section class="inner_page_breadcrumb">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-6 offset-xl-3 text-center">
+					<div class="breadcrumb_content">
+						<h4 class="breadcrumb_title"><?php echo $rowusers->fullname;?></h4>
+						<p class="color-white">
+						<?php echo lang('joinedsince');?> <?php echo $tgl." ".$bulanind." ".$tahun;?>,&nbsp;<?php echo lang('education_ins');?>
+						<?php echo $rowusers->profile;?>
+						<?php 
+							$query_a = $this->db->query("SELECT * FROM ".$this->db->dbprefix('education')." WHERE iduser='".$rowusers->iduser."'");
+							$data_a=$query_a->result(); 
+							foreach ($data_a as $da)
+							{
+							echo $da->level." - ".$da->college." - ".$da->field_of_study."<br/>";
+							}
+						?>
+						</p>
+					</div>
 				</div>
-				<?php
-					}			
-				?>
-			  </div>	
-			  <div class="card-body">
-				<h4 class="card-title"><a class="card-courses-title" href="<?php echo base_url()?>learning/coursesdetail/<?php echo $dlc["idcourses"];?>"><?php echo $dlc["title"];?></a></h4>
-				<p class="card-text">
-				<?php 
-				$queryusers = $this->db->query("SELECT fullname FROM `".$this->db->dbprefix('users')."` WHERE iduser='".$rowinstructors->iduser."'");
-				$datausers=$queryusers->result(); 
-				$x=0;
-				$coma="";
-				foreach ($datausers as $du)
-				{
-					$x++;
-					if ($x<$queryusers->num_rows())
-					{
-						$coma=", ";	
-					}
-						echo $du->fullname.$coma;
-				}	
-				?>
-				</p>
-				<p class="card-text">
-				<?php
-					for($i=1;$i<=5;$i++) 
-					{
-				?>		
-						<span class="fa fa-star <?php if($i<=$ratingchecked){ echo "checked";}?>"></span>
-				<?php
-					}
-				?>	
-					<b><?php echo number_format($reviewstar,1);?></b> (<?php echo $reviewtotal;?>)
-				</p>
-				<p class="card-text text-right"><b><?php if($dlc["price"]!=0){echo lang('curency')." ".money($dlc["price"]);}else{ echo lang('free');}?></b></p>
-				<p class="card-text"><small class="text-muted"><?php echo timeago($dlc["date"],$idlanguage);?></small></p>
-			  </div>
 			</div>
-		  </div>
-		  
-			<?php
-				}
-			?>
-			<!-- Footer -->
-			<div class="container">
-			<div class="row">
-			  <div class="col text-center">
-				 <?php echo $this->ajax_pagination_instructors->create_links(); ?> 
-			  </div>
-			</div>
-			</div>
-			<!-- /Footer -->
-		  <?php
-			}
-			else
-			{	
-		  ?>
-			<!-- Footer -->
-			<div class="container">
-			<div class="row">
-			  <div class="col text-center">
-				  <img src="<?php echo base_url();?>assets/codedume/img/data_notfound.png" width="550" heigt="550"><br/>	
-				  <p class="text-center"><h1><b><?php echo lang('no_data');?>.</b></h1></p>
-			  </div>
-			</div>
-			</div>
-			<!-- /Footer -->
-		  <?php
-			}
-		  ?>
-			</div>
-			<!-- /.row -->	
-			
-            <!-- /.card -->	
-            </div> 
-		<!-- /.container-fluid -->		
-        </div>
-    </div>
-    <!-- /.row -->
-</div>
-<!-- /Registration -->
+		</div>
+</section>
 
-</main>
+<!-- Our Team Members -->
+<section class="our-team pb40">
+		<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="instructor_personal_infor">
+								<div class="instructor_thumb text-center">
+									<img class="img-fluid" src="<?php if($rowusers->profilepicture==""){ ?><?php echo base_url()?>assets/files/users/default_user.png<?php }else{ ?><?php echo base_url()?>assets/files/users/<?php echo $rowusers->profilepicture;?><?php } ?>" alt="<?php echo $rowusers->fullname;?>" width="150px" height="150px">
+								</div>
+							</div>
+						</div>
+					</div>		
+					<div class="row" id="postList">
+					<?php
+						if(!empty($posts))
+						{
+							foreach ($posts as $dlc)
+							{
+							$queryinstructors = $this->db->query("SELECT iduser FROM `".$this->db->dbprefix('instructors')."` WHERE idcourses='".$dlc["idcourses"]."'");
+							$rowinstructors = $queryinstructors->row();
+							
+							// ================ Rating ================ //
+							
+							$querysumrating = $this->db->query("SELECT SUM(rating) AS ratingtotal FROM `".$this->db->dbprefix('review')."` WHERE idcourses='".$dlc["idcourses"]."'");
+							$rowsumrating = $querysumrating->row();
+							$totalrating = $rowsumrating->ratingtotal;
+							
+							$querycountrating = $this->db->query("SELECT COUNT(*) AS reviewertotal FROM `".$this->db->dbprefix('review')."` WHERE idcourses='".$dlc["idcourses"]."'");
+							$rowcountrating = $querycountrating->row();
+							$reviewtotal = $rowcountrating->reviewertotal;
+							
+							$reviewstar=$totalrating / $reviewtotal;
+							$ratingchecked=round($reviewstar);
+
+							$querycountpayment = $this->db->query("SELECT COUNT(*) AS totalpayment FROM `".$this->db->dbprefix('payment')."` WHERE idcourses='".$dlc["idcourses"]."'");
+							$rowcountpayment = $querycountpayment->row();
+							$totalpayment = $rowcountpayment->totalpayment;
+							
+					?>				
+						<div class="col-lg-6 col-xl-4">
+							<div class="top_courses">
+								<div class="thumb">
+									<img class="img-whp" src="<?php echo base_url()?>assets/files/courses/<?php echo $dlc["image"];?>" alt="<?php echo $dlc["image"];?>">
+									<div class="overlay">
+										<?php
+											if($totalpayment>='50')
+											{
+										?>
+											<div class="tag"><?php echo lang('best_seller');?></div>
+										<?php
+											}			
+										?>
+										<a class="tc_preview_course" href="<?php echo base_url()?>learning/coursesdetail/<?php echo $dlc["idcourses"];?>"><?php echo lang('pc');?></a>
+									</div>
+								</div>
+								<div class="details">
+									<div class="tc_content">
+										<p>
+										<?php 
+										$queryusers = $this->db->query("SELECT fullname FROM `".$this->db->dbprefix('users')."` WHERE iduser='".$rowinstructors->iduser."'");
+										$datausers=$queryusers->result(); 
+										$x=0;
+										$coma="";
+										foreach ($datausers as $du)
+										{
+											$x++;
+											if ($x<$queryusers->num_rows())
+											{
+												$coma=", ";	
+											}
+												echo $du->fullname.$coma;
+										}	
+										?>
+										</p>
+										<h5><?php echo $dlc["title"];?></h5>
+										<ul class="tc_review">
+										<?php
+											for($i=1;$i<=5;$i++) 
+											{
+										?>		
+											<li class="list-inline-item"><a href="#"><i class="<?php if($i<=$ratingchecked){ echo "fa fa-star";}else{ echo "fa fa-star-o";}?>"></i></a></li>
+										<?php
+											}
+										?>		
+											<li class="list-inline-item"><a href="#"><b><?php echo number_format($reviewstar,1);?></b> (<?php echo $reviewtotal;?>)</a></li>
+										</ul>
+									</div>
+									<div class="tc_footer">
+										<div class="tc_price float-right"><?php if($dlc["price"]!=0){echo lang('curency')." ".money($dlc["price"]);}else{ echo lang('free');}?></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					<?php
+							}
+					?>
+						<div class="col-lg-12">
+							<div class="mbp_pagination">
+							<?php echo $this->ajax_pagination_instructors->create_links(); ?> 
+							</div>
+						</div>
+					<?php
+					}	
+					else
+					{	
+					?>
+						<div class="col text-center">
+				  		<img src="<?php echo base_url();?>assets/eslearning/img/data_notfound.png" width="550" heigt="550"><br/>	
+				 		<p class="text-center"><h1><b><?php echo lang('no_data');?>.</b></h1></p>
+			 			</div>
+					<?php
+					}
+					?>	
+					</div>
+		</div>
+</section>

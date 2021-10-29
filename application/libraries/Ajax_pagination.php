@@ -14,22 +14,22 @@ class Ajax_pagination{
 
     var $base_url        = ''; // The page we are linking to
     var $total_rows      = ''; // Total number of items (database results)
-    var $per_page        = 10; // Max number of items you want shown per page
+    var $per_page        =  10; // Max number of items you want shown per page
     var $num_links       =  2; // Number of "digit" links to show before/after the currently viewed page
     var $cur_page        =  0; // The current page being viewed
     var $first_link      = 'First';
-    var $next_link       = '&#187;';
-    var $prev_link       = '&#171;';
+    var $next_link       = 'Next <span class="flaticon-right-arrow-1"></span>';
+    var $prev_link       = '<span class="flaticon-left-arrow"></span> Prev';
     var $last_link       = 'Last';
     var $uri_segment     = 3;
-    var $full_tag_open   = '<ul class="pagination justify-content-center pagination-lg">';
+    var $full_tag_open   = '<ul class="page_navigation">';
     var $full_tag_close  = '</ul>';
-    var $first_tag_open  = '<li class="page-item">';
-    var $first_tag_close = '</li>';
-    var $last_tag_open   = '<li class="page-item">';
-    var $last_tag_close  = '</li>';
-    var $cur_tag_open    = '<li class="page-item active"><a class="page-link rounded-0" href="#">';
-    var $cur_tag_close   = '</a></li>';
+    var $first_tag_open  = '<li class="page-item"><a class="page-link" href="#">';
+    var $first_tag_close = '</a></li>';
+    var $last_tag_open   = '<li class="page-item"><a class="page-link" href="#">';
+    var $last_tag_close  = '</a></li>';
+    var $cur_tag_open    = '<li class="page-item active" aria-current="page"><a class="page-link" href="#" style="color:#ffffff">';
+    var $cur_tag_close   = '<span class="sr-only">(current)</span></a></li>';
     var $next_tag_open   = '<li class="page-item">';
     var $next_tag_close  = '</li>';
     var $prev_tag_open   = '<li class="page-item">';
@@ -91,7 +91,11 @@ class Ajax_pagination{
 
         // Is there only one page? Hm... nothing more to do here then.
         if ($num_pages == 1){
-            $info = '<ul class="pagination justify-content-center pagination-lg"><li class="page-item active"><a class="page-link rounded-0" href="#">'.lang('total_page_query').' '.$this->total_rows .'</a></li></ul>' ;
+            $info = '<ul class="page_navigation">
+            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">'.lang('total_page_query').'</a></li>
+            <li class="page-item active" aria-current="page"><a class="page-link" href="#"> '.$this->total_rows .'<span class="sr-only">(current)</span></a></li>
+            <li class="page-item disabled"><a class="page-link" href="#" aria-disabled="true">'.lang('total_page_query_courses').'</a></li>
+            </ul>' ;
             return $info;
         }
 
@@ -219,7 +223,7 @@ class Ajax_pagination{
 
     function getAJAXlink($count, $text) {
         $pageCount = $count?$count:0;
-        return '<a href="javascript:void(0);"' . $this->anchor_class . ' class="page-link rounded-0" onclick="'.$this->link_func.'('.$pageCount.')">'. $text .'</a>';
+        return '<a href="javascript:void(0);"' . $this->anchor_class . ' class="page-link" onclick="'.$this->link_func.'('.$pageCount.')">'. $text .'</a>';
     }
 }
 // END Pagination Class

@@ -58,85 +58,79 @@
 				$rowcountpayment = $querycountpayment->row();
 				$totalpayment = $rowcountpayment->totalpayment;
 				
-		?>
-		  <div class="col-lg-3 col-md-6 mb-4 d-flex align-items-stretch">
-			<div class="card h-100 card-courses-item rounded-0">
-			   <div class="img-gradient">
-				<img class="card-img-top img-fluid" src="<?php echo base_url()?>assets/files/courses/<?php echo $dlc["image"];?>" alt="Card image cap">
-				<?php
-					if($totalpayment>='50')
-					{
-				?>
-				<div class="courses-label">
-					<span class="courses-text-label"><?php echo lang('best_seller');?></span>
-				</div>
-				<?php
-					}			
-				?>
-			  </div>	
-			  <div class="card-body">
-				<h4 class="card-title"><a class="card-courses-title" href="<?php echo base_url()?>learning/coursesdetail/<?php echo $dlc["idcourses"];?>"><?php echo $dlc["title"];?></a></h4>
-				<p class="card-text">
-				<?php 
-				$queryusers = $this->db->query("SELECT fullname FROM `".$this->db->dbprefix('users')."` WHERE iduser='".$rowinstructors->iduser."'");
-				$datausers=$queryusers->result(); 
-				$x=0;
-				$coma="";
-				foreach ($datausers as $du)
-				{
-					$x++;
-					if ($x<$queryusers->num_rows())
-					{
-						$coma=", ";	
+?>
+		  <div class="col-lg-6 col-xl-4">
+							<div class="top_courses">
+								<div class="thumb">
+									<img class="img-whp" src="<?php echo base_url()?>assets/files/courses/<?php echo $dlc["image"];?>" alt="<?php echo $dlc["image"];?>">
+									<div class="overlay">
+										<?php
+											if($totalpayment>='50')
+											{
+										?>
+											<div class="tag"><?php echo lang('best_seller');?></div>
+										<?php
+											}			
+										?>
+										<a class="tc_preview_course" href="<?php echo base_url()?>learning/coursesdetail/<?php echo $dlc["idcourses"];?>"><?php echo lang('pc');?></a>
+									</div>
+								</div>
+								<div class="details">
+									<div class="tc_content">
+										<p>
+										<?php 
+										$queryusers = $this->db->query("SELECT fullname FROM `".$this->db->dbprefix('users')."` WHERE iduser='".$rowinstructors->iduser."'");
+										$datausers=$queryusers->result(); 
+										$x=0;
+										$coma="";
+										foreach ($datausers as $du)
+										{
+											$x++;
+											if ($x<$queryusers->num_rows())
+											{
+												$coma=", ";	
+											}
+												echo $du->fullname.$coma;
+										}	
+										?>
+										</p>
+										<h5><?php echo $dlc["title"];?></h5>
+										<ul class="tc_review">
+										<?php
+											for($i=1;$i<=5;$i++) 
+											{
+										?>		
+											<li class="list-inline-item"><a href="#"><i class="<?php if($i<=$ratingchecked){ echo "fa fa-star";}else{ echo "fa fa-star-o";}?>"></i></a></li>
+										<?php
+											}
+										?>		
+											<li class="list-inline-item"><a href="#"><b><?php echo number_format($reviewstar,1);?></b> (<?php echo $reviewtotal;?>)</a></li>
+										</ul>
+									</div>
+									<div class="tc_footer">
+										<div class="tc_price float-right"><?php if($dlc["price"]!=0){echo lang('curency')." ".money($dlc["price"]);}else{ echo lang('free');}?></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					<?php
+							}
+					?>
+						<div class="col-lg-12">
+							<div class="mbp_pagination">
+							<?php echo $this->ajax_pagination->create_links(); ?> 
+							</div>
+						</div>
+					<?php
+					}	
+					else
+					{	
+					?>
+						<div class="col text-center">
+				  		<img src="<?php echo base_url();?>assets/eslearning/img/data_notfound.png" width="550" heigt="550"><br/>	
+				 		<p class="text-center"><h1><b><?php echo lang('no_data');?>.</b></h1></p>
+			 			</div>
+					<?php
 					}
-						echo $du->fullname.$coma;
-				}	
-				?>
-				</p>
-				<p class="card-text">
-				<?php
-					for($i=1;$i<=5;$i++) 
-					{
-				?>		
-						<span class="fa fa-star <?php if($i<=$ratingchecked){ echo "checked";}?>"></span>
-				<?php
-					}
-				?>	
-					<b><?php echo number_format($reviewstar,1);?></b> (<?php echo $reviewtotal;?>)
-				</p>
-				<p class="card-text text-right"><b><?php if($dlc["price"]!=0){echo lang('curency')." ".money($dlc["price"]);}else{ echo lang('free');}?></b></p>
-				<p class="card-text"><small class="text-muted"><?php echo timeago($dlc["date"],$idlanguage);?></small></p>
-			  </div>
-			</div>
-		  </div>
-			<?php
-				}
-			?>	
-				<!-- Footer -->
-				<div class="container">
-				<div class="row">
-				  <div class="col text-center">
-					 <?php echo $this->ajax_pagination->create_links(); ?> 
-				  </div>
-				</div>
-				</div>
-				<!-- /Footer -->
-				
-			<?php
-			}
-			else
-			{	
-		  ?>
-			<!-- Footer -->
-			<div class="container">
-			<div class="row">
-			  <div class="col text-center">
-				  <img src="<?php echo base_url();?>assets/eslearning/img/data_notfound.png" width="550" heigt="550"><br/>	
-				  <p class="text-center"><h1><b><?php echo lang('no_data');?>.</b></h1></p>
-			  </div>
-			</div>
-			</div>
-			<!-- /Footer -->
-		  <?php
-			}
-		  ?>
+					?>	
+					</div>
