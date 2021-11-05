@@ -132,145 +132,147 @@
 		$subcategory = $rowsubcategory->title;
 ?>
       
+<!-- Inner Page Breadcrumb -->
+<section class="inner_page_breadcrumb csv3">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-12">
+					<div class="breadcrumb_content">
+						<div class="cs_row_one csv3">
+							<div class="cs_ins_container">
+								<div class="cs_instructor">
+									<ul class="cs_instrct_list float-left mb0">
+										<li class="list-inline-item">
+											<a class="color-white" href="#"><?php echo lang('created_by');?></a>
+											<?php 
+											$queryusers = $this->db->query("SELECT fullname FROM `".$this->db->dbprefix('users')."` WHERE iduser='".$rowinstructors->iduser."'");
+											$datausers=$queryusers->result(); 
+											$x=0;
+											$coma="";
+											foreach ($datausers as $du)
+											{
+												$x++;
+												if ($x<$queryusers->num_rows())
+												{
+													$coma=", ";	
+												}
+													echo "<a href='".base_url()."learning/instructorsdetail/".$rowinstructors->iduser."' class='color-white'><b>".$du->fullname."</b></a>".$coma;
+											}	
+											?>
+										</li>
+										<li class="list-inline-item"><a class="color-white" href="#"><?php echo lang('course_date_detail');?> <?php echo $tgl." ".$bulanind." ".$tahun;?></a></li>
+									</ul>
+								</div>
+								<h3 class="cs_title color-white"><?php echo $dc["title"];?></h3>
+								<ul class="cs_review_seller">
+									<li class="list-inline-item"><a class="color-white" href="#"><span><?php if($dc["price"]!=0){echo lang('curency')." ".money($dc["price"]);}else{ echo lang('free');}?></span></a></li>
+									
+									<?php
+										for($i=1;$i<=5;$i++) 
+										{
+									?>		
+											<li class="list-inline-item"><a href="#"><i class="<?php if($i<=$ratingchecked){ echo "fa fa-star";}else{ echo "fa fa-star-o";}?>"></i></a></li>
+											
+									<?php
+										}
+									?>	
+									<li class="list-inline-item"><a class="color-white" href="#"><b><?php echo number_format($reviewstar,1);?></b> (<?php echo $reviewtotal;?>)</a></li>
+								</ul>
+								<ul class="cs_review_enroll">
+									<li class="list-inline-item"><a class="color-white" href="#"><span class="flaticon-profile"></span> <?php echo $totalenroll;?>&nbsp;<?php echo lang('students_enrolled');?></a></li>
+									<li class="list-inline-item"><a class="color-white" href="#"><span class="flaticon-medal"></span> <?php echo lang('level');?> <?php echo $level;?></a></li>
+									<li class="list-inline-item"><a class="color-white" href="#"><span class="flaticon-book"></span> <?php echo lang('module');?> <?php echo $totalmodule;?></a></li>
+								</ul>
+								<ul class="cs_watch_list float-right mb0">
+									<form>
+									<?php
+									if($dc["price"]!="0")
+									{
+										$cekoder = $this->db->query("SELECT COUNT(*) AS totalorder FROM `".$this->db->dbprefix('order')."` WHERE idcourses='".$dc["idcourses"]."' AND iduser='".$idusers."'");
+										$rowcekorder = $cekoder->row();
+										$totalorder = $rowcekorder->totalorder;
+										if($totalorder>='1')
+										{	
+											$cekenroll = $this->db->query("SELECT COUNT(*) AS totalenroll FROM `".$this->db->dbprefix('enroll')."` WHERE idcourses='".$dc["idcourses"]."' AND iduser='".$idusers."'");
+											$rowcekenroll = $cekenroll->row();
+											$totalenroll = $rowcekenroll->totalenroll;
+											if($totalenroll>='1'){
+
+											}
+											else
+											{
+									?>
+										<input type="hidden" name="idcourses" id="idcourses" value="<?php echo $dc["idcourses"];?>">
+										<input type="hidden" name="price" id="price" value="<?php echo $dc["price"];?>">
+										<li class="list-inline-item"><button type="button" class="btn btn-primary" id="addCourses" disabled><i class="fa fa-plus"></i> <?php echo lang('take_class');?></button>
+									<?php
+											}
+										}	
+										else
+										{
+									?>		
+										<input type="hidden" name="idcourses" id="idcourses" value="<?php echo $dc["idcourses"];?>">
+										<input type="hidden" name="price" id="price" value="<?php echo $dc["price"];?>">
+										<li class="list-inline-item"><button type="button" class="btn btn-primary" id="addCourses"><i class="fa fa-plus"></i> <?php echo lang('take_class');?></button></li>
+									<?php
+										}	
+									}
+									else
+									{	
+										$cekenroll = $this->db->query("SELECT COUNT(*) AS totalenroll FROM `".$this->db->dbprefix('enroll')."` WHERE idcourses='".$dc["idcourses"]."' AND iduser='".$idusers."'");
+										$rowcekenroll = $cekenroll->row();
+										$totalenroll = $rowcekenroll->totalenroll;
+										if($totalenroll>='1'){
+
+										}
+										else
+										{
+									?>	
+										<input type="hidden" name="idcourses" id="idcourses" value="<?php echo $dc["idcourses"];?>">
+										<input type="hidden" name="price" id="price" value="<?php echo $dc["price"];?>">
+										<li class="list-inline-item"><button type="button" class="btn btn-primary" id="addCourses"><i class="fa fa-plus"></i> <?php echo lang('take_class');?></button></li>
+									<?php	
+										}					
+									}
+									?>
+									<?php
+										$cekfav = $this->db->query("SELECT COUNT(*) AS totalfav FROM `".$this->db->dbprefix('favorite')."` WHERE idcourses='".$dc["idcourses"]."' AND iduser='".$idusers."'");
+										$rowcekfav = $cekfav->row();
+										$totalfav = $rowcekfav->totalfav;
+										if($totalfav>='1')
+										{	
+									?>
+										<input type="hidden" name="idcourses" id="idcourses" value="<?php echo $dc["idcourses"];?>">
+										<input type="hidden" name="price" id="price" value="<?php echo $dc["price"];?>">
+										<li class="list-inline-item"><button type="button" class="btn btn-danger" id="addFavorite"><i class="fa fa-heart"></i> <?php echo lang('favorite_delete');?></button></li>
+									<?php
+										}
+										else
+										{
+									?>		
+										<input type="hidden" name="idcourses" id="idcourses" value="<?php echo $dc["idcourses"];?>">
+										<input type="hidden" name="price" id="price" value="<?php echo $dc["price"];?>">
+										<li class="list-inline-item"><button type="button" class="btn btn-danger" id="addFavorite"><i class="fa fa-heart-o"></i> <?php echo lang('favorite');?></button></li>
+									<?php	
+										}		
+									?>	
+									</form>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</section>
+
+<!-- Box Section -->
+<section class="our-team pb40">
+	<div class="container">
 		
-		
-<main role="main">
-
-    <div class="jumbotron jumbotron-fluid bgcourses">
-	  <div class="container">
-		 <div class="row">
-		  <div class="col-sm-3"> <img src="<?php echo base_url()?>assets/files/courses/<?php echo $dc["image"];?>" class="img-thumbnail"> </div>
-		  <div class="col-sm-9"><p><h1><b><?php echo $dc["title"];?></b></h1><br/>
-		    <form>
-			<div class="btn-group">
-			<?php
-			if($dc["price"]!="0")
-			{
-				$cekoder = $this->db->query("SELECT COUNT(*) AS totalorder FROM `".$this->db->dbprefix('order')."` WHERE idcourses='".$dc["idcourses"]."' AND iduser='".$idusers."'");
-				$rowcekorder = $cekoder->row();
-				$totalorder = $rowcekorder->totalorder;
-				if($totalorder>='1')
-				{	
-					$cekenroll = $this->db->query("SELECT COUNT(*) AS totalenroll FROM `".$this->db->dbprefix('enroll')."` WHERE idcourses='".$dc["idcourses"]."' AND iduser='".$idusers."'");
-					$rowcekenroll = $cekenroll->row();
-					$totalenroll = $rowcekenroll->totalenroll;
-					if($totalenroll>='1'){}else
-					{
-			?>
-				<input type="hidden" name="idcourses" id="idcourses" value="<?php echo $dc["idcourses"];?>">
-				<input type="hidden" name="price" id="price" value="<?php echo $dc["price"];?>">
-				<button type="button" class="btn btn-primary rounded-0" id="addCourses" disabled><i class="fas fa-plus"></i> <?php echo lang('take_class');?></button>
-				&nbsp;&nbsp;&nbsp;
-			<?php
-					}
-				}	
-				else
-				{
-			?>		
-				<input type="hidden" name="idcourses" id="idcourses" value="<?php echo $dc["idcourses"];?>">
-				<input type="hidden" name="price" id="price" value="<?php echo $dc["price"];?>">
-				<button type="button" class="btn btn-primary rounded-0" id="addCourses"><i class="fas fa-plus"></i> <?php echo lang('take_class');?></button>
-				&nbsp;&nbsp;&nbsp;
-			<?php
-				}	
-			}
-			else
-			{	
-				$cekenroll = $this->db->query("SELECT COUNT(*) AS totalenroll FROM `".$this->db->dbprefix('enroll')."` WHERE idcourses='".$dc["idcourses"]."' AND iduser='".$idusers."'");
-				$rowcekenroll = $cekenroll->row();
-				$totalenroll = $rowcekenroll->totalenroll;
-				if($totalenroll>='1'){}else
-				{
-			?>	
-				<input type="hidden" name="idcourses" id="idcourses" value="<?php echo $dc["idcourses"];?>">
-				<input type="hidden" name="price" id="price" value="<?php echo $dc["price"];?>">
-				<button type="button" class="btn btn-primary rounded-0" id="addCourses"><i class="fas fa-plus"></i> <?php echo lang('take_class');?></button>
-				&nbsp;&nbsp;&nbsp;
-			<?php	
-				}					
-			}
-			?>
-			</form>
-			<form>
-			<?php
-				$cekfav = $this->db->query("SELECT COUNT(*) AS totalfav FROM `".$this->db->dbprefix('favorite')."` WHERE idcourses='".$dc["idcourses"]."' AND iduser='".$idusers."'");
-				$rowcekfav = $cekfav->row();
-				$totalfav = $rowcekfav->totalfav;
-				if($totalfav>='1')
-				{	
-			?>
-				<input type="hidden" name="idcourses" id="idcourses" value="<?php echo $dc["idcourses"];?>">
-				<input type="hidden" name="price" id="price" value="<?php echo $dc["price"];?>">
-				<button type="button" class="btn btn-danger rounded-0" id="addFavorite"><i class="fas fa-heart"></i> <?php echo lang('favorite_delete');?></button>
-			<?php
-				}
-				else
-				{
-			?>		
-				<input type="hidden" name="idcourses" id="idcourses" value="<?php echo $dc["idcourses"];?>">
-				<input type="hidden" name="price" id="price" value="<?php echo $dc["price"];?>">
-				<button type="button" class="btn btn-danger rounded-0" id="addFavorite"><i class="far fa-heart"></i> <?php echo lang('favorite');?></button>
-			<?php	
-				}		
-			?>	
-			</form>
-			</div><br/>
-			<?php echo lang('created_by');?>
-			<?php 
-			$queryusers = $this->db->query("SELECT fullname FROM `".$this->db->dbprefix('users')."` WHERE iduser='".$rowinstructors->iduser."'");
-			$datausers=$queryusers->result(); 
-			$x=0;
-			$coma="";
-			foreach ($datausers as $du)
-			{
-				$x++;
-				if ($x<$queryusers->num_rows())
-				{
-					$coma=", ";	
-				}
-					echo "<a href='".base_url()."learning/instructorsdetail/".$rowinstructors->iduser."' class='link-instructors'><b>".$du->fullname."</b></a>".$coma;
-			}	
-			?>
-		  </p>
-		  <p>
-		    <?php
-				for($i=1;$i<=5;$i++) 
-				{
-			?>		
-					<span class="fa fa-star <?php if($i<=$ratingchecked){ echo "checked";}?>"></span>
-			<?php
-				}
-			?>	
-				<b><?php echo number_format($reviewstar,1);?></b> (<?php echo $reviewtotal;?>)&nbsp;&nbsp;&nbsp;
-				<i class="fas fa-calendar-alt"></i> <?php echo $tgl." ".$bulanind." ".$tahun;?>&nbsp;&nbsp;&nbsp;
-				<i class="fas fa-comment"></i> <?php echo $language;?>
-		  </p>
-			<?php 
-			if($totalenroll>='1')
-			{
-				//Empty
-			}
-			else
-			{
-				//Not Empty
-			?>
-			<p align="justify">
-			<button type="button" class="btn btn-success"><b><?php if($dc["price"]!=0){echo lang('curency')." ".money($dc["price"]);}else{ echo lang('free');}?></b></button>&nbsp;&nbsp;&nbsp;
-			<?php
-			}
-			?>
-			<i class="fas fa-users"></i> <?php echo $totalenroll;?>&nbsp;<?php echo lang('students_enrolled');?>&nbsp;&nbsp;&nbsp;
-			<i class="fas fa-level-up-alt"></i>&nbsp;<?php echo lang('level');?> <?php echo $level;?>&nbsp;&nbsp;&nbsp;
-			<i class="fas fa-book-open"></i>&nbsp;<?php echo lang('module');?> <?php echo $totalmodule;?>
-		  </p>
-		  </div>
-		</div> 
-	  </div>
-    </div>
-
-
-	<!-- The Modal -->
-	  <div class="modal fade" id="modal-feedback-courses">
+		<!-- The Modal -->
+		<div class="modal fade" id="modal-feedback-courses">
 		<div class="modal-dialog modal-dialog-centered">
 		  <div class="modal-content">
 		  
@@ -393,11 +395,10 @@
 			</form>
 		  </div>
 		</div>
-	  </div>
+	  </div>	
+	  
 
-  <!-- Courses Infor -->
-  <div class="container-fluid eslearing-content-item">
-	<div class="row">
+		<div class="row">
 		<div class="container">
 		
 			<nav aria-label="breadcrumb ">
@@ -474,9 +475,9 @@
 								<br/>
 								<div class="text-center">
 								<p>
-								<button type="button" class="btn btn-success" id="btnCountinueCourses" name="btnCountinueCourses" onclick="myFunctionCs()"><i class="fas fa-award"></i></i>&nbsp;&nbsp;&nbsp;<?php echo lang('certificate');?></button>
+								<button type="button" class="btn btn-success" id="btnCountinueCourses" name="btnCountinueCourses" onclick="myFunctionCs()"><i class="fa fa-vcard"></i></i>&nbsp;&nbsp;&nbsp;<?php echo lang('certificate');?></button>
 								&nbsp;
-								<button type="button" class="btn btn-info" id="btnFeedBack" name="btnFeedBack" data-toggle="modal" data-target="#modal-feedback-courses"><i class="fas fa-thumbs-up"></i>&nbsp;&nbsp;&nbsp;<?php echo lang('feedback');?></button>
+								<button type="button" class="btn btn-info" id="btnFeedBack" name="btnFeedBack" data-toggle="modal" data-target="#modal-feedback-courses"><i class="fa fa-thumbs-up"></i>&nbsp;&nbsp;&nbsp;<?php echo lang('feedback');?></button>
 								</p>
 								</div>
 								<script type="text/javascript">
@@ -517,7 +518,7 @@
 						<div class="alert alert-info">
 						  <p align="justify"><?php echo lang('courses_enroll');?></p>
 						</div>
-						<p><button type="button" class="btn btn-primary btn-block" id="btnCountinueCourses" name="btnCountinueCourses" onclick="myFunction()"><i class="fas fa-book-reader"></i>&nbsp;&nbsp;&nbsp;<?php echo lang('continue_learning');?></button></p>
+						<p><button type="button" class="btn btn-primary btn-block" id="btnCountinueCourses" name="btnCountinueCourses" onclick="myFunction()"><i class="fa fa-book"></i>&nbsp;&nbsp;&nbsp;<?php echo lang('continue_learning');?></button></p>
 						<script type="text/javascript">
 							function myFunction() {
 							  window.open("<?php echo base_url();?>learning/contentcourses/<?php echo $dc['idcourses'];?>/<?php echo $nextidcontent;?>");
@@ -589,7 +590,7 @@
 						  ?>
 							   <tr>
 								<td>&nbsp;<?php echo $x.".".$y.". ";?></td>
-								<td width="80%">&nbsp;&nbsp;<span class="far fa-file-pdf text-info mr-2"></span>&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url();?>learning/contentcourses/<?php echo $dc['idcourses'];?>/<?php echo $dcc->idcontent;?>" class="link-content-courses"><?php echo $dcc->title;?></a></td>
+								<td width="80%">&nbsp;&nbsp;<span class="fa fa-file-pdf-o text-info mr-2"></span>&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url();?>learning/contentcourses/<?php echo $dc['idcourses'];?>/<?php echo $dcc->idcontent;?>" class="link-content-courses"><?php echo $dcc->title;?></a></td>
 								<td class="text-right"><?php if($y<=$maxidcontent){?>&nbsp;<span class="fa fa-check text-info mr-2"></span><?php }?></td>
 							   </tr>
 						  <?php 
@@ -599,7 +600,7 @@
 						  ?>
 							 <tr>
 								<td>&nbsp;<?php echo $x.".".$y.". ";?></td>
-								<td width="80%">&nbsp;&nbsp;<span class="fas fa-link text-info mr-2"></span>&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url();?>learning/contentcourses/<?php echo $dc['idcourses'];?>/<?php echo $dcc->idcontent;?>" class="link-content-courses"><?php echo $dcc->title;?></a></td>
+								<td width="80%">&nbsp;&nbsp;<span class="fa fa-link text-info mr-2"></span>&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url();?>learning/contentcourses/<?php echo $dc['idcourses'];?>/<?php echo $dcc->idcontent;?>" class="link-content-courses"><?php echo $dcc->title;?></a></td>
 								<td class="text-right"><?php if($y<=$maxidcontent){?>&nbsp;<span class="fa fa-check text-info mr-2"></span><?php }?></td>
 							   </tr>
 						  <?php
@@ -628,7 +629,7 @@
 								  ?>
 									   <tr>
 										<td>&nbsp;<?php echo $x.".".$y.". ";?></td>
-										<td width="80%"><span class="fa fa-lock mr-22"></span>&nbsp;&nbsp;<span class="far fa-file-pdf mr-2"></span>&nbsp;&nbsp;&nbsp;<?php echo $dcc->title;?></td>
+										<td width="80%"><span class="fa fa-lock mr-22"></span>&nbsp;&nbsp;<span class="far fa-file-pdf-o mr-2"></span>&nbsp;&nbsp;&nbsp;<?php echo $dcc->title;?></td>
 										<td></td>
 									   </tr>
 								  <?php 
@@ -668,7 +669,7 @@
 						  ?>
 							   <tr>
 								<td>&nbsp;<?php echo $x.".".$y.". ";?></td>
-								<td width="80%"><span class="fa fa-lock mr-22"></span>&nbsp;&nbsp;<span class="far fa-file-pdf mr-2"></span>&nbsp;&nbsp;&nbsp;<?php echo $dcc->title;?></td>
+								<td width="80%"><span class="fa fa-lock mr-22"></span>&nbsp;&nbsp;<span class="fa fa-file-pdf-o mr-2"></span>&nbsp;&nbsp;&nbsp;<?php echo $dcc->title;?></td>
 								<td></td>
 							   </tr>
 						  <?php 
@@ -678,7 +679,7 @@
 						  ?>
 							 <tr>
 								<td>&nbsp;<?php echo $x.".".$y.". ";?></td>
-								<td width="80%"><span class="fa fa-lock mr-22"></span>&nbsp;&nbsp;<span class="fas fa-link mr-2"></span>&nbsp;&nbsp;&nbsp;<?php echo $dcc->title;?></td>
+								<td width="80%"><span class="fa fa-lock mr-22"></span>&nbsp;&nbsp;<span class="fa fa-link mr-2"></span>&nbsp;&nbsp;&nbsp;<?php echo $dcc->title;?></td>
 								<td></td>
 							   </tr>
 						  <?php
@@ -1185,11 +1186,11 @@
 		<!-- /.container-fluid -->		
         </div>
     </div>
-    <!-- /.row -->
-</div>
-<!-- /Registration -->
+    <!-- /.row -->		
 
-</main>
+	</div>
+</section>
+		
 <?php
 	}
 ?>

@@ -14,34 +14,32 @@
 	$idsubcategory = $rowsubcategory->idsubcategory;
 	$subcategory = $rowsubcategory->title;
 ?>
-      
-		
-		
-<main role="main">
 
-    <div class="jumbotron jumbotron-fluid pages">
-	  <div class="container-fluid">
-		<nav aria-label="breadcrumb ">
-		  <ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="<?php echo base_url();?>home" class="link-title"><?php echo lang('home');?></a></li>
-			<li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url();?>learning/category/<?php echo $idcategory;?>" class="link-title"><?php echo $category;?></a></li>
-			<li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url();?>learning/subcategory/<?php echo $idsubcategory;?>" class="link-title"><?php echo $subcategory;?></a></li>
-			<li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url();?>learning/coursesdetail/<?php echo $idcourses;?>" class="link-title"><?php echo $coursestitle;?></a></li>
-			<li class="breadcrumb-item active" aria-current="page"><?php echo $contenttitle;?></li>
-		  </ol>
-		</nav>
-	  </div>
-    </div>
+<!-- Inner Page Breadcrumb -->
+<section class="inner_page_breadcrumb">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-6 offset-xl-3 text-center">
+				<div class="breadcrumb_content">
+					<h4 class="breadcrumb_title"><?php echo $coursestitle;?></h4>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="<?php echo base_url();?>"><?php echo lang('home');?></a></li>
+						<li class="breadcrumb-item"><a href="<?php echo base_url();?>learning/category/<?php echo $idcategory;?>" class="link-title"><?php echo $category;?></a></li>
+						<li class="breadcrumb-item"><a href="<?php echo base_url();?>learning/subcategory/<?php echo $idsubcategory;?>" class="link-title"><?php echo $subcategory;?></a></li>
+						<li class="breadcrumb-item active" aria-current="page"><?php echo $coursestitle;?></li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
+<!-- Box Section -->
+<section class="our-team pb40">
+	<div class="container">
+		<div class="row">
 
-<!-- Content -->
-  <div class="container-fluid codedume-content-item">
-	<div class="row">
-		<div class="container">
-            <div class="card-body">
-			
-			<div class="row">
-			  <div class="col-3">
+		<div class="col-3">
 				<h1><?php echo lang('material');?></h1>
 				<hr/>
 				<p>
@@ -279,9 +277,8 @@
             </div> 
 		<!-- /.container-fluid -->		
         </div>
-    </div>
-    <!-- /.row -->
-</div>
-<!-- /Content -->
 
-</main>
+		</div>
+	</div>
+</section>
+		

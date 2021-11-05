@@ -158,6 +158,7 @@ $lang['es']='Erlangga Studio';
 $lang['cert_file']='Sertifikat';
 $lang['search_courses']='Cari Kursus';
 $lang['order_by']='Urutkan';
+$lang['course_date_detail']='Tanggal : ';
 $lang['category']='Kategori';
 $lang['subcategory']='Subkategori';
 $lang['no_selected']='Tidak Ada Pilihan';

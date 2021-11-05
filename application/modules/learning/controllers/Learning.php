@@ -422,7 +422,7 @@ class Learning extends CI_Controller {
 		$data['meta'] = 'learning/meta';
 		$data['css'] = 'learning/css';
 		$data['javascript'] = 'learning/js';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
     }
 	
 	public function contentcourses($idcourses,$idcontent)
@@ -501,7 +501,7 @@ class Learning extends CI_Controller {
 		$data['meta'] = 'learning/meta';
 		$data['css'] = 'learning/css_contentcourses';
 		$data['javascript'] = 'learning/js_contentcourses';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
     }
 	
 	public function printcertificate($idusers,$idcourses)
