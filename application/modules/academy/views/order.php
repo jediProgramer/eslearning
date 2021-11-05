@@ -44,28 +44,29 @@
 	}
 ?>
       
-		
-		
-<main role="main">
+<!-- Inner Page Breadcrumb -->
+<section class="inner_page_breadcrumb">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-6 offset-xl-3 text-center">
+				<div class="breadcrumb_content">
+					<h4 class="breadcrumb_title"><?php echo lang('my_order');?></h4>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="<?php echo base_url();?>"><?php echo lang('home');?></a></li>
+						<li class="breadcrumb-item active" aria-current="page"><?php echo lang('my_order');?></li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-    <div class="jumbotron jumbotron-fluid pages">
-	  <div class="container-fluid">
-		<nav aria-label="breadcrumb ">
-		  <ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="<?php echo base_url();?>home" class="link-title"><?php echo lang('home');?></a></li>
-			<li class="breadcrumb-item active" aria-current="page"><?php echo lang('my_order');?></li>
-		  </ol>
-		</nav>
-	  </div>
-    </div>
+<!-- Box Section -->
+<section class="our-team pb40">
+	<div class="container">
+		<div class="row">
 
-
-  <!-- Registration -->
-  <div class="container-fluid codedume-content-item">
-	<div class="row">
-		<div class="container">
-            <div class="card-body">
-			
+		<div class="card-body">
 				<table id="data" class="table table-bordered table-striped">
                 <thead>
                 <tr class="dt-head-center">
@@ -101,7 +102,7 @@
                   <td><?php echo lang('curency')." ".money($price);?></td>
 				  <td><?php if($do["status"]=="1"){ echo lang('unpaid');}else if($do["status"]=="2"){ echo lang('in_process');}else if($do["status"]=="3"){ echo lang('paid');}?></td>
 				  <td class="dt-head-center">
-					<a class="btn btn-info btn-sm" href="<?php echo base_url()?>academy/invoiceprint/<?php echo $do["idorder"];?>" target="_blank"><i class="far fa-money-bill-alt"></i>&nbsp;</i>&nbsp;<?php echo lang('bill');?></a>&nbsp;|&nbsp;
+					<a class="btn btn-info btn-sm" href="<?php echo base_url()?>academy/invoiceprint/<?php echo $do["idorder"];?>" target="_blank"><i class="fa fa-money"></i>&nbsp;</i>&nbsp;<?php echo lang('bill');?></a>&nbsp;|&nbsp;
 					<a class="btn btn-warning btn-sm" href="<?php echo base_url()?>academy/confirm/<?php echo $do["idorder"];?>"><i class="fa fa-check-circle">&nbsp;</i>&nbsp;<?php echo lang('confirmation');?></a>
 				  </td>
                 </tr>
@@ -109,14 +110,10 @@
 					}
 				?>
 				</table>
-			
             <!-- /.card -->	
             </div> 
-		<!-- /.container-fluid -->		
-        </div>
-    </div>
-    <!-- /.row -->
-</div>
-<!-- /Registration -->
 
-</main>
+		</div>
+	</div>
+</section>
+		

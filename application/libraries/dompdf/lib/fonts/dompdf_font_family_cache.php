@@ -78,9 +78,9 @@
     'normal' => $fontDir . '/DejaVuSerif',
   ),
   'open sans' => array(
-    'normal' => $fontDir . '/open-sans-normal_51ba28b5f27fd644cff98970ef021b9c',
-    '600' => $fontDir . '/open-sans-600_4e999d04cc8530996e52c17df0e7c39d',
-    'bold' => $fontDir . '/open-sans-bold_3bd42b6fe9b97c66ee3eaa173f003b55',
-    '800' => $fontDir . '/open-sans-800_92f8c6ea32f9a5be41e2badfcf52e8dc',
+    'normal' => $fontDir . '/open-sans-normal_419ca2a287972a158219b978f229ede6',
+    '600' => $fontDir . '/open-sans-600_64ac57926b507025248db17c928e754f',
+    'bold' => $fontDir . '/open-sans-bold_9e65c40d79aec60d8a85b5e3737f687f',
+    '800' => $fontDir . '/open-sans-800_91bf3d00ea062a819ac024a0f71b597f',
   ),
 ) ?>

@@ -39,118 +39,95 @@
 	}
 ?>
       
-		
-		
-<main role="main">
+<!-- Inner Page Breadcrumb -->
+<section class="inner_page_breadcrumb">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-6 offset-xl-3 text-center">
+				<div class="breadcrumb_content">
+					<h4 class="breadcrumb_title"><?php echo lang('academy_dashboard');?></h4>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="<?php echo base_url();?>"><?php echo lang('home');?></a></li>
+						<li class="breadcrumb-item active" aria-current="page"><?php echo lang('academy_dashboard');?></li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+</section> 	
 
-    <div class="jumbotron jumbotron-fluid pages">
-	  <div class="container-fluid">
-		<nav aria-label="breadcrumb ">
-		  <ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="<?php echo base_url();?>home" class="link-title"><?php echo lang('home');?></a></li>
-			<li class="breadcrumb-item active" aria-current="page"><?php echo lang('academy_dashboard');?></li>
-		  </ol>
-		</nav>
-	  </div>
-    </div>
+<!-- Box Section -->
+<section class="our-team pb40">
+	<div class="container">
+		<div class="row">
 
+			<div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+				<div class="ff_one style3">
+					<div class="icon"><span class="flaticon-online-learning"></span></div>
+					<div class="detais">
+						<p><?php echo lang('my_courses');?></p>
+						<div class="timer">
+						<?php
+							$query_a = $this->db->query("SELECT COUNT(*) as total FROM ".$this->db->dbprefix('enroll')." WHERE iduser='".$idusers."'");
+							$row_a = $query_a->row();
+							echo $row_a->total;
+						?>
+						</div>
+					</div>
+				</div>
+			</div>
 
-  <!-- Registration -->
-  <div class="container-fluid codedume-content-item">
-	<div class="row">
-		
-		<div class="container">
-            <div class="card-body">
-			
-			<div class="row">
-			
-				<div class="col-lg-3 col-6">
-				  <div class="card h-60 bg-info text-white rounded-0">
-					  <div class="card-body ">
-						<div class="row">
-							<div class="col-6">
-								<h3><b>
-								<?php
-									$query_a = $this->db->query("SELECT COUNT(*) as total FROM ".$this->db->dbprefix('enroll')." WHERE iduser='".$idusers."'");
-									$row_a = $query_a->row();
-									echo $row_a->total;
-								?></b></h3>
-								<p><a href="<?php echo base_url();?>academy/mycourses" class="link-card"><b><?php echo lang('my_courses');?></a></b></p>
-							</div>	
-							<div class="col-6">	
-									<i class="fas fa-laptop-code fa-5x"></i>
-							</div>	
-						</div>
-					  </div>
-				   </div>
-				</div>
-				
-				<div class="col-lg-3 col-6">
-				  <div class="card h-60 bg-danger text-white rounded-0">
-					  <div class="card-body ">
-						<div class="row">
-							<div class="col-6">
-								<h3><b>
-								<?php
-									$query_b = $this->db->query("SELECT COUNT(*) as total FROM ".$this->db->dbprefix('favorite')." WHERE iduser='".$idusers."'");
-									$row_b = $query_b->row();
-									echo $row_b->total;
-								?></b></h3>
-								<p><b><a href="<?php echo base_url();?>academy/myfavorite" class="link-card"><?php echo lang('my_favorite');?></a></b></p>
-							</div>	
-							<div class="col-6">	
-									<i class="fas fa-heart fa-5x"></i>
-							</div>	
-						</div>
-					  </div>
-				   </div>
-				</div>
-				
-				<div class="col-lg-3 col-6">
-				  <div class="card h-60 bg-warning text-white rounded-0">
-					  <div class="card-body ">
-						<div class="row">
-							<div class="col-6">
-								<h3><b>
-								<?php
-									$query_c = $this->db->query("SELECT COUNT(*) as total FROM ".$this->db->dbprefix('order')." WHERE iduser='".$idusers."'");
-									$row_c = $query_c->row();
-									echo $row_c->total;
-								?></b></h3>
-								<p><b><a href="<?php echo base_url();?>academy/order" class="link-card"><?php echo lang('my_order');?></a></b></p>
-							</div>	
-							<div class="col-6">	
-									<i class="fas fa-shopping-cart fa-5x"></i>
-							</div>	
-						</div>
-					  </div>
-				   </div>
-				</div>
-				
-				<div class="col-lg-3 col-6">
-				  <div class="card h-60 bg-success text-white rounded-0">
-					  <div class="card-body ">
-						<div class="row">
-							<div class="col-6">
-								<h3><b>
-								<?php
-									$query_d = $this->db->query("SELECT COUNT(*) as total FROM ".$this->db->dbprefix('order')." WHERE iduser='".$idusers."' AND status='3'");
-									$row_d = $query_d->row();
-									echo $row_d->total;
-								?></b></h3>
-								<p><b><a href="<?php echo base_url();?>academy/payment" class="link-card"><?php echo lang('payment');?></a></b></p>
-							</div>	
-							<div class="col-6">	
-									<i class="fas fa-donate fa-5x"></i>
-							</div>	
-						</div>
-					  </div>
-				   </div>
-				</div>
-				
+			<div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+							<div class="ff_one style4">
+								<div class="icon"><span class="flaticon-like"></span></div>
+								<div class="detais">
+									<p><?php echo lang('my_favorite');?></p>
+									<div class="timer">
+									<?php
+										$query_b = $this->db->query("SELECT COUNT(*) as total FROM ".$this->db->dbprefix('favorite')." WHERE iduser='".$idusers."'");
+										$row_b = $query_b->row();
+										echo $row_b->total;
+									?>
+									</div>
+								</div>
+							</div>
 			</div>
 			
-			<br/>
+			<div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+					<div class="ff_one style2">
+						<div class="icon"><span class="flaticon-shopping-bag"></span></div>
+						<div class="detais">
+							<p><?php echo lang('my_order');?></p>
+							<div class="timer">
+							<?php
+								$query_c = $this->db->query("SELECT COUNT(*) as total FROM ".$this->db->dbprefix('order')." WHERE iduser='".$idusers."'");
+								$row_c = $query_c->row();
+								echo $row_c->total;
+							?>
+							</div>
+						</div>
+					</div>
+			</div>
+
+			<div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+					<div class="ff_one">
+						<div class="icon"><span class="flaticon-shopping-bag-1"></span></div>
+						<div class="detais">
+							<p><?php echo lang('payment');?></p>
+							<div class="timer">
+							<?php
+								$query_d = $this->db->query("SELECT COUNT(*) as total FROM ".$this->db->dbprefix('order')." WHERE iduser='".$idusers."' AND status='3'");
+								$row_d = $query_d->row();
+								echo $row_d->total;
+							?>
+							</div>
+						</div>
+					</div>
+			</div>
+
+		</div>
+
+		<br/>
 		
 			
 			<h1><?php echo lang('my_courses');?></h1>
@@ -220,7 +197,7 @@
 					if($persent_progress=="100")
 					{		
 					?>
-					<button type="button" class="btn btn-success" id="btnCountinueCourses" name="btnCountinueCourses" onclick="myFunctionCs()"><i class="fas fa-award"></i></i>&nbsp;&nbsp;&nbsp;<?php echo lang('certificate');?></button>
+					<button type="button" class="btn btn-success" id="btnCountinueCourses" name="btnCountinueCourses" onclick="myFunctionCs()"><i class="fa fa-vcard"></i></i>&nbsp;&nbsp;&nbsp;<?php echo lang('certificate');?></button>
 					<script type="text/javascript">
 					function myFunctionCs() {
 					  window.open("<?php echo base_url();?>learning/printcertificate/<?php echo $idusers;?>/<?php echo $d['idcourses'];?>");
@@ -231,7 +208,7 @@
 					else
 					{	
 					?>	
-					<button type="button" class="btn btn-primary" id="btnCountinueCourses" name="btnCountinueCourses" onclick="myFunction()"><i class="fas fa-book-reader"></i>&nbsp;&nbsp;&nbsp;<?php echo lang('continue_learning');?></button></p>
+					<button type="button" class="btn btn-primary" id="btnCountinueCourses" name="btnCountinueCourses" onclick="myFunction()"><i class="fa fa-book"></i>&nbsp;&nbsp;&nbsp;<?php echo lang('continue_learning');?></button></p>
 					<script type="text/javascript">
 						function myFunction() {
 						  window.open("<?php echo base_url();?>learning/contentcourses/<?php echo $d['idcourses'];?>/<?php echo $nextidcontent;?>");
@@ -246,14 +223,7 @@
 					}
 				?>
 				</table>
-			
-            <!-- /.card -->	
-            </div> 
-		<!-- /.container-fluid -->		
-        </div>
-    </div>
-    <!-- /.row -->
-</div>
-<!-- /Registration -->
 
-</main>
+	</div>
+</section>
+		

@@ -45,72 +45,73 @@
 	}
 ?>
       
-		
-		
-<main role="main">
-
-    <div class="jumbotron jumbotron-fluid profile">
-	  <div class="container">
-		 <div class="row">
-		  <div class="col-sm-3"> <img src="<?php if($rowusers->profilepicture==""){ ?><?php echo base_url()?>assets/files/users/default_user.png<?php }else{ ?><?php echo base_url()?>assets/files/users/<?php echo $rowusers->profilepicture;?><?php } ?>" class="img-thumbnail" alt="Cinque Terre"> </div>
-		  <div class="col-sm-9"><p><h1><?php echo $fullname;?></h1><br/><p>@<?php echo $username;?></p><?php echo lang('joinedsince');?> <?php echo $tgl." ".$bulanind." ".$tahun;?>,&nbsp;<i class="fas fa-map-marker-alt"></i> <?php echo $rowusers->country;?></p><p align="justify"><?php echo $rowusers->profile;?></p></div>
-		</div> 
-	  </div>
-    </div>
-
-
-  <!-- Registration -->
-  <div class="container-fluid codedume-content-item">
-	<div class="row">
+<!-- Inner Page Breadcrumb -->
+<section class="inner_page_breadcrumb">
 		<div class="container">
-		
-			<nav aria-label="breadcrumb ">
-			  <ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="<?php echo base_url();?>home" class="link-title"><?php echo lang('home');?></a></li>
-				<li class="breadcrumb-item active" aria-current="page"><?php echo lang('edit_profile');?></li>
-			  </ol>
-			</nav>
-		
-            <div class="card-body">
+			<div class="row">
+				<div class="col-xl-6 offset-xl-3 text-center">
+					<div class="breadcrumb_content">
+						<h4 class="breadcrumb_title"><?php echo $fullname;?></h4>
+						<p class="color-white">
+						<?php echo lang('joinedsince');?> <?php echo $tgl." ".$bulanind." ".$tahun;?>,&nbsp;&nbsp;<i class="fa fa-map"></i>&nbsp;&nbsp;<?php echo $rowusers->country;?>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+</section>
+
+<!-- Our Team Members -->
+<section class="our-team pb40">
+		<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="instructor_personal_infor">
+								<div class="instructor_thumb text-center">
+									<img class="img-fluid" src="<?php if($rowusers->profilepicture==""){ ?><?php echo base_url()?>assets/files/users/default_user.png<?php }else{ ?><?php echo base_url()?>assets/files/users/<?php echo $rowusers->profilepicture;?><?php } ?>" width="150px" height="150px">
+								</div>
+							</div>
+						</div>
+					</div>		
+					<div class="row">
+					
+					<div class="card-body">
 			
-			<!-- Nav tabs -->
-			  <ul class="nav nav-tabs">
-				<li class="nav-item">
-				  <a class="nav-link active link-title" data-toggle="tab" href="#profilepicture"><?php echo lang('profilepicture');?></a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link link-title" data-toggle="tab" href="#accountsetting"><?php echo lang('accountsetting');?></a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link link-title" data-toggle="tab" href="#password"><?php echo lang('password');?></a>
-				</li>
-				<li class="nav-item">
-				  <a class="nav-link link-title" data-toggle="tab" href="#email"><?php echo lang('email');?></a>
-				</li>
-			  </ul>
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs">
+						<li class="nav-item">
+						<a class="nav-link active link-title" data-toggle="tab" href="#profilepicture"><?php echo lang('profilepicture');?></a>
+						</li>
+						<li class="nav-item">
+						<a class="nav-link link-title" data-toggle="tab" href="#accountsetting"><?php echo lang('accountsetting');?></a>
+						</li>
+						<li class="nav-item">
+						<a class="nav-link link-title" data-toggle="tab" href="#password"><?php echo lang('password');?></a>
+						</li>
+						<li class="nav-item">
+						<a class="nav-link link-title" data-toggle="tab" href="#email"><?php echo lang('email');?></a>
+						</li>
+					</ul>
 
-			  <!-- Tab panes -->
-			  <div class="tab-content">
-				<div id="profilepicture" class="container tab-pane active">
-				  <?php $this->load->view($profilepictureform); ?>
-				</div>
-				<div id="accountsetting" class="container tab-pane fade">
-				  <?php $this->load->view($profileaccountform); ?>
-				</div>
-				<div id="password" class="container tab-pane fade">
-				  <?php $this->load->view($profilepasswordform); ?>
-				</div>
-				<div id="email" class="container tab-pane fade">
-				  <?php $this->load->view($profileemailform); ?>
-				</div>
-			  </div>
-            <!-- /.card -->	
-            </div> 
-		<!-- /.container-fluid -->		
-        </div>
-    </div>
-    <!-- /.row -->
-</div>
-<!-- /Registration -->
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div id="profilepicture" class="container tab-pane active">
+						<?php $this->load->view($profilepictureform); ?>
+						</div>
+						<div id="accountsetting" class="container tab-pane fade">
+						<?php $this->load->view($profileaccountform); ?>
+						</div>
+						<div id="password" class="container tab-pane fade">
+						<?php $this->load->view($profilepasswordform); ?>
+						</div>
+						<div id="email" class="container tab-pane fade">
+						<?php $this->load->view($profileemailform); ?>
+						</div>
+					</div>
+					<!-- /.card -->	
+					</div> 
 
-</main>
+					</div>
+		</div>
+</section>
+		

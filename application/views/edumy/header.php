@@ -119,7 +119,7 @@
 						    <div class="dropdown-menu">
 						    	<div class="user_set_header">
 						    		<img class="float-left" src="<?php if($rowusers->profilepicture==""){ ?><?php echo base_url()?>assets/files/users/default_user.png<?php }else{ ?><?php echo base_url()?>assets/files/users/<?php echo $rowusers->profilepicture;?><?php } ?>" alt="e1.png" width="50px" height="50px">
-							    	<p><?php echo $fullname;?> <br><span class="address"><?php echo $email;?></span></p>
+							    	<p><?php echo $fullname;?> <br><span class="address"><?php echo $username;?></span></p>
 						    	</div>
 						    	<div class="user_setting_content">
 									<a class="dropdown-item active" href="<?php echo base_url()?>academy/dashboard"><?php echo lang('academy_dashboard');?></a>

@@ -14,7 +14,7 @@ class Academy extends CI_Controller {
 		$this->load->helper(array('form','url'));
 		$this->load->helper('text');
 		$this->load->model('model');
-		//$this->load->library('pdf');
+		$this->load->library('pdf');
 		// Load default language
 		$language = $this->session->userdata('language');
 		$this->lang->load('text_lang', $language);
@@ -95,7 +95,7 @@ class Academy extends CI_Controller {
 		$data['meta'] = 'academy/meta';
 		$data['css'] = 'academy/css';
 		$data['javascript'] = 'academy/js';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
     }
 	
 	public function updateprofile()
@@ -131,7 +131,7 @@ class Academy extends CI_Controller {
 		$data['meta'] = 'academy/meta';
 		$data['css'] = 'academy/css';
 		$data['javascript'] = 'academy/js';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
     }
 	
 	public function order()
@@ -164,7 +164,7 @@ class Academy extends CI_Controller {
 		$data['meta'] = 'academy/meta';
 		$data['css'] = 'academy/css';
 		$data['javascript'] = 'academy/js';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
     }
 	
 	public function payment()
@@ -197,7 +197,7 @@ class Academy extends CI_Controller {
 		$data['meta'] = 'academy/meta';
 		$data['css'] = 'academy/css';
 		$data['javascript'] = 'academy/js';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
     }
 	
 	public function mycourses()
@@ -228,7 +228,7 @@ class Academy extends CI_Controller {
 		$data['meta'] = 'academy/meta';
 		$data['css'] = 'academy/css';
 		$data['javascript'] = 'academy/js';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
     }
 	
 	public function myfavorite()
@@ -259,7 +259,7 @@ class Academy extends CI_Controller {
 		$data['meta'] = 'academy/meta';
 		$data['css'] = 'academy/css';
 		$data['javascript'] = 'academy/js';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
     }
 	
 	public function confirm($idorder)
@@ -293,7 +293,7 @@ class Academy extends CI_Controller {
 		$data['meta'] = 'academy/meta';
 		$data['css'] = 'academy/css';
 		$data['javascript'] = 'academy/js';
-		$this->load->view('home/home',$data);
+		$this->load->view('edumy/edumy',$data);
     }
 	
 	public function savesprofilepicture()
@@ -610,7 +610,7 @@ class Academy extends CI_Controller {
 			  </head>
 			  <body>
 				  <div id='logo'>
-					<img src='http://localhost/eslearning/assets/eslearning/img/logo.png' >
+					<img src='http://localhost/eslearning/assets/eslearning/img/eslogo.png' >
 				  </div>
 				  <h1>".lang('invoice')." - #".$idorder."</h1>
 				  <table>
@@ -726,7 +726,7 @@ class Academy extends CI_Controller {
 				  font-weight: normal;
 				  text-align: center;
 				  margin: 0 0 20px 0;
-				  background-color: #000000;
+				  background-color: #007bff;
 				}
 
 				#bank {
@@ -935,7 +935,7 @@ class Academy extends CI_Controller {
 			  </head>
 			  <body>
 				  <div id='logo'>
-					<img src='http://localhost/eslearning/assets/eslearning/img/logo.png' >
+					<img src='http://localhost/eslearning/assets/eslearning/img/eslogo.png' >
 				  </div>
 				  <h1>".lang('receipt')." - #".$idorder."</h1>
 				  <table>
@@ -1035,7 +1035,7 @@ class Academy extends CI_Controller {
 				  font-weight: normal;
 				  text-align: center;
 				  margin: 0 0 20px 0;
-				  background-color: #000000;
+				  background-color: #007bff;
 				}
 
 				#bank {

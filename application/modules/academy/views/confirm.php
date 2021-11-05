@@ -44,28 +44,29 @@
 	}
 ?>
       
-		
-		
-<main role="main">
+<!-- Inner Page Breadcrumb -->
+<section class="inner_page_breadcrumb">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-6 offset-xl-3 text-center">
+				<div class="breadcrumb_content">
+					<h4 class="breadcrumb_title"><?php echo lang('confirmation');?></h4>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="<?php echo base_url();?>"><?php echo lang('home');?></a></li>
+						<li class="breadcrumb-item active" aria-current="page"><?php echo lang('confirmation');?></li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-    <div class="jumbotron jumbotron-fluid pages">
-	  <div class="container-fluid">
-		<nav aria-label="breadcrumb ">
-		  <ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="<?php echo base_url();?>home" class="link-title"><?php echo lang('home');?></a></li>
-			<li class="breadcrumb-item"><a href="<?php echo base_url();?>academy/order" class="link-title"><?php echo lang('my_order');?></a></li>
-			<li class="breadcrumb-item active" aria-current="page"><?php echo lang('confirmation');?></li>
-		  </ol>
-		</nav>
-	  </div>
-    </div>
+<!-- Box Section -->
+<section class="our-team pb40">
+	<div class="container">
+		<div class="row">
 
-
-  <!-- Registration -->
-  <div class="container-fluid codedume-content-item">
-	<div class="row">
-		<div class="container">
-            <div class="card-body">
+		<div class="card-body">
 				<?php
 					foreach($dataorder as $do)
 					{ 
@@ -183,11 +184,7 @@
 			
             <!-- /.card -->	
             </div> 
-		<!-- /.container-fluid -->		
-        </div>
-    </div>
-    <!-- /.row -->
-</div>
-<!-- /Registration -->
 
-</main>
+		</div>
+	</div>
+</section>

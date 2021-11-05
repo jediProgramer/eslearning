@@ -44,27 +44,29 @@
 	}
 ?>
       
-		
-		
-<main role="main">
+<!-- Inner Page Breadcrumb -->
+<section class="inner_page_breadcrumb">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-6 offset-xl-3 text-center">
+				<div class="breadcrumb_content">
+					<h4 class="breadcrumb_title"><?php echo lang('payment');?></h4>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="<?php echo base_url();?>"><?php echo lang('home');?></a></li>
+						<li class="breadcrumb-item active" aria-current="page"><?php echo lang('payment');?></li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-    <div class="jumbotron jumbotron-fluid pages">
-	  <div class="container-fluid">
-		<nav aria-label="breadcrumb ">
-		  <ol class="breadcrumb">
-			<li class="breadcrumb-item"><a href="<?php echo base_url();?>home" class="link-title"><?php echo lang('home');?></a></li>
-			<li class="breadcrumb-item active" aria-current="page"><?php echo lang('payment');?></li>
-		  </ol>
-		</nav>
-	  </div>
-    </div>
-
-
-  <!-- Registration -->
-  <div class="container-fluid codedume-content-item">
-	<div class="row">
-		<div class="container">
-            <div class="card-body">
+<!-- Box Section -->
+<section class="our-team pb40">
+	<div class="container">
+		<div class="row">
+		 	
+		<div class="card-body">
 			
 				<table id="data" class="table table-bordered table-striped">
                 <thead>
@@ -101,7 +103,7 @@
                   <td><?php echo lang('curency')." ".money($do["amountpayment"]);?></td>
 				  <td><?php if($do["status"]=="1"){ echo lang('unpaid');}else if($do["status"]=="2"){ echo lang('in_process');}else if($do["status"]=="3"){ echo lang('paid');}?></td>
 				  <td class="dt-head-center">
-					<a class="btn btn-success btn-sm" href="<?php echo base_url()?>academy/receiptprint/<?php echo $do["idorder"];?>" target="_blank"><i class="fas fa-print"></i>&nbsp;</i>&nbsp;<?php echo lang('print_receipt');?></a>&nbsp;
+					<a class="btn btn-success btn-sm" href="<?php echo base_url()?>academy/receiptprint/<?php echo $do["idorder"];?>" target="_blank"><i class="fa fa-print"></i>&nbsp;</i>&nbsp;<?php echo lang('print_receipt');?></a>&nbsp;
 				  </td>
                 </tr>
 				<?php
@@ -111,11 +113,8 @@
 			
             <!-- /.card -->	
             </div> 
-		<!-- /.container-fluid -->		
-        </div>
-    </div>
-    <!-- /.row -->
-</div>
-<!-- /Registration -->
 
-</main>
+		</div>
+	</div>
+</section>
+		

@@ -2,7 +2,7 @@
 <div class="card-body">
 	<br/>
 	<div class="alert alert-warning">
-	  <h6><i class="icon fas fa-info"></i> &nbsp;<?php echo lang('info');?></h6>
+	  <h6><i class="fa fa-info"></i> &nbsp;<?php echo lang('info');?></h6>
 	  <p align="justify"><?php echo lang('profileemail_info');?></p>
 	</div>
 	<br/>

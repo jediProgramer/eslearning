@@ -13,7 +13,7 @@ class Learning extends CI_Controller {
 		$this->load->helper(array('form','url'));
 		$this->load->helper('text');
 		$this->load->model('model');
-		//$this->load->library('pdf');
+		$this->load->library('pdf');
 		$this->load->library('Ajax_pagination');
 		$this->load->library('Ajax_pagination_category');
 		$this->load->library('Ajax_pagination_instructors');
@@ -629,7 +629,7 @@ class Learning extends CI_Controller {
 			text-align: 'justify';
 		}
 		.banner-container {
-		  background-color: #080808;
+		  background-color: #007bff;
 		  color: #ffffff;
 		  font-family: 'Open Sans', sans-serif;
 		  padding: 10px;
@@ -656,7 +656,7 @@ class Learning extends CI_Controller {
 		<div class='banner-container'>
 			<table border='0' width='100%'>
 				<tr>
-				<td align='left'><img src='".base_url()."assets/eslearning/img/logo_footer.png' width='120'><br/><center></td>
+				<td align='left'><img src='".base_url()."assets/eslearning/img/eslogo_white.png' width='120'><br/><center></td>
 				<td>&nbsp;&nbsp;&nbsp;</td>
 				<td align='right'><font style='font-size:10px; text-align:right'>Nomor : ".$certnumber_u."</font></td>
 				</tr>
