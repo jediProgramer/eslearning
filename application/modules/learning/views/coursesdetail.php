@@ -73,7 +73,19 @@
 		$bulan=$split[1];
 		$tgl=$split[2];
 		$bulanind=day($bulan,$idlanguage);	
+
+		$split1=explode('-',$dc["start_date"]);
+		$tahun1=$split1[0];
+		$bulan1=$split1[1];
+		$tgl1=$split1[2];
+		$bulanind1=day($bulan1,$idlanguage);
 		
+		$split2=explode('-',$dc["end_date"]);
+		$tahun2=$split2[0];
+		$bulan2=$split2[1];
+		$tgl2=$split2[2];
+		$bulanind2=day($bulan2,$idlanguage);
+
 		function money($nilai, $pecahan = 0) 
 		{
 			return number_format($nilai, $pecahan, ',', '.');
@@ -160,7 +172,7 @@
 											}	
 											?>
 										</li>
-										<li class="list-inline-item"><a class="color-white" href="#"><?php echo lang('course_date_detail');?> <?php echo $tgl." ".$bulanind." ".$tahun;?></a></li>
+										<li class="list-inline-item"><a class="color-white" href="#"><?php echo lang('course_date_detail');?> <?php if($dc["idcoursetype"]=="1"){ echo $tgl1." ".$bulanind1." ".$tahun1." - ".$tgl2." ".$bulanind2." ".$tahun2; } else { echo $tgl." ".$bulanind." ".$tahun; } ?></a></li>
 									</ul>
 								</div>
 								<h3 class="cs_title color-white"><?php echo $dc["title"];?></h3>
@@ -179,7 +191,7 @@
 									<li class="list-inline-item"><a class="color-white" href="#"><b><?php echo number_format($reviewstar,1);?></b> (<?php echo $reviewtotal;?>)</a></li>
 								</ul>
 								<ul class="cs_review_enroll">
-									<li class="list-inline-item"><a class="color-white" href="#"><span class="flaticon-profile"></span> <?php echo $totalenroll;?>&nbsp;<?php echo lang('students_enrolled');?></a></li>
+									<li class="list-inline-item"><a class="color-white" href="#"><span class="flaticon-profile"></span> <?php if($dc["idcoursetype"]=="1"){ ?><?php echo $totalenroll;?>&nbsp;<?php echo lang('students_enrolled');?><?php echo $dc["quota"];?><?php echo lang('quota_enrolled');?><?php }else{ ?><?php echo $totalenroll;?>&nbsp;<?php echo lang('students_enrolled_video');?><?php } ?></a></li>
 									<li class="list-inline-item"><a class="color-white" href="#"><span class="flaticon-medal"></span> <?php echo lang('level');?> <?php echo $level;?></a></li>
 									<li class="list-inline-item"><a class="color-white" href="#"><span class="flaticon-book"></span> <?php echo lang('module');?> <?php echo $totalmodule;?></a></li>
 								</ul>
@@ -193,6 +205,23 @@
 										$totalorder = $rowcekorder->totalorder;
 										if($totalorder>='1')
 										{	
+											
+											if($dc["idcoursetype"]=="1"){
+												if($dc["quota"]==$totalenroll){ ?>
+													<li class="list-inline-item"><button type="button" class="btn btn-warning" disabled><i class="fa fa-remove"></i> <?php echo lang('quota_full');?></button>
+												<?php 
+												}
+
+											}
+
+											if($dc["idcoursetype"]=="1"){
+												if(date("Y-m-d")>=$dc["end_date"]){ ?>
+													<li class="list-inline-item"><button type="button" class="btn btn-info" disabled><i class="fa  fa-window-close"></i> <?php echo lang('enrolled_closed');?></button>
+												<?php 
+												}
+
+											}
+
 											$cekenroll = $this->db->query("SELECT COUNT(*) AS totalenroll FROM `".$this->db->dbprefix('enroll')."` WHERE idcourses='".$dc["idcourses"]."' AND iduser='".$idusers."'");
 											$rowcekenroll = $cekenroll->row();
 											$totalenroll = $rowcekenroll->totalenroll;

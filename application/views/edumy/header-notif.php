@@ -70,6 +70,49 @@
 						$rowusers = $queryusers->row();
 				?>
 				<ul class="header_user_notif pull-right dn-smd">
+	                <li class="user_notif">
+						<div class="dropdown">
+						    <a class="notification_icon" href="#" data-toggle="dropdown"><span class="flaticon-alarm"></span></a>
+						    <div class="dropdown-menu notification_dropdown_content">
+								<div class="so_heading">
+									<p>Notifications</p>
+								</div>
+								<div class="so_content" data-simplebar="init">
+									<ul>
+										<li>
+											<h5>Status Update</h5>
+											<p>This is an automated server response message. All systems are online.</p>
+										</li>
+										<li>
+											<h5>Status Update</h5>
+											<p>This is an automated server response message. All systems are online.</p>
+										</li>
+										<li>
+											<h5>Status Update</h5>
+											<p>This is an automated server response message. All systems are online.</p>
+										</li>
+										<li>
+											<h5>Status Update</h5>
+											<p>This is an automated server response message. All systems are online.</p>
+										</li>
+										<li>
+											<h5>Status Update</h5>
+											<p>This is an automated server response message. All systems are online.</p>
+										</li>
+										<li>
+											<h5>Status Update</h5>
+											<p>This is an automated server response message. All systems are online.</p>
+										</li>
+										<li>
+											<h5>Status Update</h5>
+											<p>This is an automated server response message. All systems are online.</p>
+										</li>
+									</ul>
+								</div>
+								<a class="view_all_noti text-thm" href="#">View all alerts</a>
+						    </div>
+						</div>
+	                </li>
 	                <li class="user_setting">
 						<div class="dropdown">
 	                		<a class="btn dropdown-toggle" href="#" data-toggle="dropdown"><img class="rounded-circle" src="<?php if($rowusers->profilepicture==""){ ?><?php echo base_url()?>assets/files/users/default_user.png<?php }else{ ?><?php echo base_url()?>assets/files/users/<?php echo $rowusers->profilepicture;?><?php } ?>" alt="<?php echo $fullname;?>" width="50px" height="50px"></a>

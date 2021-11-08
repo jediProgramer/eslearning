@@ -99,7 +99,7 @@ class Incomereport extends CI_Controller {
 			  </head>
 			  <body>
 				  <div id='logo'>
-					<img src='http://localhost/codedume/assets/codedume/img/logo.png' >
+					<img src='http://localhost/eslearning/assets/eslearning/img/eslogo.png' >
 				  </div>
 				  <h1>".lang('icome_report').", ".$month_c." ".$year_t."</h1>
 				<br/><br/>  
@@ -196,7 +196,7 @@ class Incomereport extends CI_Controller {
 				  font-weight: normal;
 				  text-align: center;
 				  margin: 0 0 20px 0;
-				  background-color: #000000;
+				  background-color: #007bff;
 				}
 
 				#bank {
