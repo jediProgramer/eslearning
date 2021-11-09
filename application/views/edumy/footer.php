@@ -29,8 +29,8 @@
 					<div class="footer_program_widget">
 						<h4><?php echo lang('help');?></h4>
 						<ul class="list-unstyled">
-							<li><a href="#"><?php echo lang('help1');?></a></li>
-							<li><a href="#"><?php echo lang('help2');?></a></li>
+							<li><a href="<?php echo base_url()?>assets/files/guidlines/panduan_pengguna.pdf"><?php echo lang('help1');?></a></li>
+							<li><a href="<?php echo base_url()?>assets/files/guidlines/panduan_pembayaran.pdf"><?php echo lang('help2');?></a></li>
 						</ul>
 					</div>
 				</div>
@@ -38,7 +38,7 @@
 					<div class="footer_support_widget">
 						<h4><?php echo lang('helpcenter');?></h4>
 						<ul class="list-unstyled">
-							<li><a href="#"><?php echo lang('helpcenter1');?></a></li>
+							<li><a href="https://wa.me/6281321397362" target="_blank"><?php echo lang('helpcenter1');?></a></li>
 						</ul>
 					</div>
 				</div>

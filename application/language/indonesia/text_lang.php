@@ -256,6 +256,7 @@ $lang['address']='<p>BTN Balitsa Cikole M-10</p>
 					<p>support@erlanggastudio.id</p>';
 $lang['help']='PANDUAN';
 $lang['help1']='Panduan Pengguna';
+$lang['help2']='Panduan Pembayaran';
 $lang['helpcenter']='PUSAT BANTUAN';	
 $lang['helpcenter1']='Helpdeks 1';	
 $lang['mobileapps']='APLIKASI MOBILE';	
