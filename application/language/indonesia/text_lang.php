@@ -269,4 +269,14 @@ $lang['rm']='Simpan data akun';
 $lang['login_account']='Masuk ke Akun Anda';
 $lang['have_account']='Sudah punya akun?';
 $lang['reg_title']='Daftar Untuk Mulai Belajar';
+$lang['checkcertificate_page']='Halaman Cek Keaslian dan Vertifikasi Sertifikat';
+$lang['checkcertificate_no']='No.Sertifikat';
+$lang['checkcertificate_name']='Atas Nama';
+$lang['checkcertificate_coursesname']='Pelatihan / Kursus';
+$lang['checkcertificate_date']='Tanggal Berlaku Sertifikat';
+$lang['checkcertificate_date_exp']='Tanggal Kadaluarsa Sertifikat';
+$lang['checkcertificate_ybs']='Yang bersangkutan';
+$lang['checkcertificate_cc']='telah menyelesaikan pelatihan';
+$lang['checkcertificate_cex']=', telah dinyatakan  <b>LULUS</b>,';
+$lang['checkcertificate_vs']='dan sertifikat yang diperoleh benar dan valid.';
 ?>

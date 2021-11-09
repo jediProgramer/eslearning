@@ -674,7 +674,7 @@ class Learning extends CI_Controller {
 			<center><img src='".base_url()."assets/eslearning/img/erlangga_signature.png' width='200' class='signature-image'></center>
 			<font font style='font-size:12px'><b>Erlangga</b></font><br/>
 			<font font style='font-size:12px'>".lang('cert_e')."</font><br/>
-			<font font style='font-size:10px'>".lang('cert_f')." : ".base_url()."veritfycertification/".$veritification_u."</font>
+			<font font style='font-size:10px'>".lang('cert_f')." : ".base_url()."veritfycertification/cekvalidation/".$veritification_u."</font>
 		</div>
 		<!-- / Body -->
 		</body>
