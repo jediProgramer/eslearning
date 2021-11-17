@@ -45,10 +45,6 @@ $(document).ready(function () {
 	  confirm_password: {
 		equalTo: "#password"
 	  },
-	  agree_checked: {
-		required: true
-	  },
-
 	},
 	messages: {
 	  fullname: {
@@ -65,9 +61,6 @@ $(document).ready(function () {
 	  },
 	  confirm_password: {
 		equalTo: "<?php echo lang('confirm_password_error_msg');?>",
-	  },
-	  agree_checked: {
-		required: "<?php echo lang('agree_checked_error_msg');?>"
 	  },
 	},
 	submitHandler: function (form) {

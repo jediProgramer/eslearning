@@ -75,10 +75,6 @@
 							<div class="form-group">
 								<center><?php echo $captcha // tampilkan recaptcha ?></center>
 							</div>
-							<div class="form-group custom-control custom-checkbox">
-							<input type="checkbox" class="custom-control-input" id="agree_checked" name="agree_checked">
-							<label class="custom-control-label" for="exampleCheck3"><?php echo lang('agree');?> <?php echo lang('term');?> <?php echo lang('and');?> <?php echo lang('privacy');?>.</label>
-						</div>
 							<button type="submit" class="btn btn-log btn-block btn-thm2"><?php echo lang('register');?></button>
 						</form>
 					</div>
